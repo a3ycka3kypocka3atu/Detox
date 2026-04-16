@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago Detox | Натуропатический детокс для всего организма</title>
+    <meta name="description" content="Натуропатический детокс для всего организма. Научный подход к очищению и восстановлению здоровья через микробиом, натуропатию и аюрведу.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════ FIXED HEADER ═══════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <button class="nav-btn" data-target="0">Наука о Биофлоре</button>
+            <button class="nav-btn" data-target="1">Натуропатия</button>
+        </div>
+        <div class="logo-container">
+            <button class="logo-btn" data-target="2">SANTIAGO</button>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn" data-target="3">Сферы Жизни</button>
+            <button class="nav-btn" data-target="4">Инструменты</button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ SLIDER HUB ═══════════════════════ -->
+    <div class="slider-container">
+        <div class="slider-track" id="slider-track">
+
+            <!-- ════════════════════════════════════════════════════════════
+                 PANEL 0 (LEFT): Наука о Биофлоре (merged: science + articles)
+                 ════════════════════════════════════════════════════════════ -->
+            <section class="panel panel-science" id="panel-science">
+                <div class="panel-scroll">
+                    <div class="panel-content">
+
+                        <!-- Hero -->
+                        <div class="section-hero">
+                            <div class="badge">Фундаментальные знания</div>
+                            <h1 class="section-title">Вселенная внутри нас</h1>
+                            <p class="section-subtitle">Наука о Микробиоме — фундамент здоровья, доказательная база и исследования</p>
+                        </div>
+
+                        <!-- PDF Download Button (top) -->
+                        <div class="pdf-download-block">
+                            <button class="btn-download" id="btn-pdf-bioflora-top">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Скачать полное руководство «Биофлора» (PDF)
+                            </button>
+                        </div>
+
+                        <!-- Block 1: Intro -->
+                        <div class="content-block">
+                            <h2>Вы не одни. Познакомьтесь с триллионами своих союзников.</h2>
+                            <p>Мы привыкли воспринимать свое тело как единый механизм, но наука говорит о другом. Мы разберем основы нашей внутренней экологии. Здесь мы раскрываем понятие «голобионта» — как человек и триллионы бактерий, грибов и вирусов живут в симбиозе. От баланса этой системы зависит ваш иммунитет, энергия и даже настроение.</p>
+                        </div>
+
+                        <!-- Block 2: Who lives inside -->
+                        <div class="content-block">
+                            <h2>Война миров: Симбионты против Патогенов</h2>
+                            <div class="two-col">
+                                <div class="info-card good">
+                                    <h3>Хорошие парни</h3>
+                                    <p>Такие симбионты, как <em>Treponema</em>, <em>Prevotella</em> и <em>Bifidobacterium</em>, критически важны для переваривания пищи и обучения нашего иммунитета.</p>
+                                </div>
+                                <div class="info-card bad">
+                                    <h3>Плохие парни</h3>
+                                    <p>Влияние антибиотиков, стерильных городских условий, стресса и западного стиля питания ведет к вымиранию полезных видов. В результате появляются патогенные грибки (кандида), паразиты и бактерии.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: Gut-Brain Axis -->
+                        <div class="content-block">
+                            <h2>Как ваш живот управляет вашей головой</h2>
+                            <p>Это самый захватывающий блок о том, как пищеварение диктует правила нашему мозгу.</p>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Блуждающий нерв (Vagus Nerve)</h4>
+                                        <p>Главная информационная магистраль, которая передает сигналы от бактерий напрямую в мозг.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Фабрика счастья</h4>
+                                        <p>90-95% гормона счастья (серотонина) производится в кишечнике при помощи бактерий.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Замкнутый круг</h4>
+                                        <p>Хронический стресс «парализует» пищеварение и разрушает микрофлору. Воспаление в кишечнике вызывает нейровоспаление, тревожность, депрессию и «туман в голове».</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 4: Food -->
+                        <div class="content-block">
+                            <h2>Мы — то, что едят наши бактерии</h2>
+                            <p>Здесь мы обсуждаем, как пища формирует наш внутренний мир.</p>
+                            <div class="two-col">
+                                <div class="info-card bad">
+                                    <h3>Что разрушает флору</h3>
+                                    <p>Избыток рафинированного сахара, животных жиров и отсутствие клетчатки убивает разнообразие флоры и кормит патогенов.</p>
+                                </div>
+                                <div class="info-card good">
+                                    <h3>Что лечит</h3>
+                                    <p>Сложные углеводы, пищевые волокна и растительная пища. Особенно мощно работают ферментированные продукты: кефир, квашеная капуста, комбуча и сыворотка.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 5: Protocol 5R -->
+                        <div class="content-block">
+                            <h2>Как вернуть порядок? Клинический подход к очищению.</h2>
+                            <p>В медицине это называется не просто «чисткой», а строгим клиническим протоколом восстановления среды. Мы используем концепцию «5R»:</p>
+                            <div class="steps-grid">
+                                <div class="step-card">
+                                    <div class="step-number">01</div>
+                                    <h4>Remove (Прополка)</h4>
+                                    <p>Убрать пищевой мусор и патогенов с помощью растительных антимикробных средств (полынь, гвоздика, черный орех).</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">02</div>
+                                    <h4>Replace (Замещение)</h4>
+                                    <p>Помощь желудку через ферменты и горечи для нормального переваривания.</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">03</div>
+                                    <h4>Reinoculate (Заселение)</h4>
+                                    <p>Правильно ввести пробиотики, чтобы они прижились в среде.</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">04</div>
+                                    <h4>Repair (Заживление)</h4>
+                                    <p>Восстановление слизистой кишечника с помощью костного бульона, витаминов и L-глютамина.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 6: Lifestyle -->
+                        <div class="content-block">
+                            <h2>Экология повседневности: Сохраняем результат</h2>
+                            <p>Практические привычки для поддержания достигнутого результата.</p>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Циркадное голодание</h4>
+                                        <p>Почему нужно не есть минимум 12 часов ночью? Это включает «внутреннего дворника», который выметает остатки пищи и бактерий.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Стимуляция блуждающего нерва</h4>
+                                        <p>Дыхательные практики, йога и работа с парасимпатической нервной системой позволяют включить режим «отдыхай и переваривай».</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 7: Final CTA -->
+                        <div class="content-block cta-block">
+                            <h2>Изучите свой микромир в деталях</h2>
+                            <p>Эта страница — лишь верхушка айсберга. Мы собрали всю фундаментальную информацию о пробиотиках, питании, протоколе восстановления и работе блуждающего нерва в один красивый и понятный документ.</p>
+                            <button class="btn-download large" id="btn-pdf-bioflora-bottom">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Скачать полное руководство по Биофлоре (PDF)
+                            </button>
+                            <p class="hint-text">Сохраните на телефон, изучите в удобное время и обязательно поделитесь этим файлом с близкими — эти знания меняют качество жизни.</p>
+                        </div>
+
+                        <!-- ── Научная база: Статьи и исследования ── -->
+                        <div class="content-block">
+                            <h2>Научная база: Исследования и статьи</h2>
+                            <p>Доказательный фундамент проекта — подробные описания экспериментов, ссылки на международные научные исследования и разбор биохимии компонентов.</p>
+                        </div>
+
+                        <div class="articles-grid">
+
+                            <article class="article-card" data-article="microbiome">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                                </div>
+                                <h3>Влияние микробиома на нейротрансмиттеры</h3>
+                                <p>Как кишечные бактерии производят 90-95% серотонина и управляют нашим настроением через ось «кишечник-мозг».</p>
+                                <span class="article-tag">PubMed</span>
+                                <span class="article-tag">Нейробиология</span>
+                            </article>
+
+                            <article class="article-card" data-article="parasites">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12l7-7"/><circle cx="12" cy="12" r="3"/></svg>
+                                </div>
+                                <h3>Биохимия антипаразитарных трав</h3>
+                                <p>Научный разбор механизмов действия полыни, пижмы и черного ореха на патогенные организмы.</p>
+                                <span class="article-tag">Биохимия</span>
+                                <span class="article-tag">Фитотерапия</span>
+                            </article>
+
+                            <article class="article-card" data-article="vagus">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                                <h3>Блуждающий нерв и пищеварение</h3>
+                                <p>Vagus Nerve — главная информационная магистраль между кишечником и мозгом. Как его стимуляция улучшает здоровье.</p>
+                                <span class="article-tag">Нейронаука</span>
+                                <span class="article-tag">Vagus</span>
+                            </article>
+
+                            <article class="article-card" data-article="fermented">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+                                </div>
+                                <h3>Ферментированные продукты и флора</h3>
+                                <p>Почему кефир, квашеная капуста и комбуча работают лучше многих таблеток — роль диких дрожжей и лактобактерий.</p>
+                                <span class="article-tag">Диетология</span>
+                                <span class="article-tag">Пробиотики</span>
+                            </article>
+
+                            <article class="article-card" data-article="protocol5r">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                </div>
+                                <h3>Клинический протокол 5R</h3>
+                                <p>Remove, Replace, Reinoculate, Repair — научный подход к восстановлению внутренней среды. Подробный разбор каждого этапа.</p>
+                                <span class="article-tag">Протокол</span>
+                                <span class="article-tag">Клиника</span>
+                            </article>
+
+                            <article class="article-card" data-article="sorbents">
+                                <div class="article-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <h3>Сорбенты: механизм действия</h3>
+                                <p>Как активированный уголь, глина и лен работают как природная губка, связывая и выводя токсины мертвых бактерий.</p>
+                                <span class="article-tag">Детокс</span>
+                                <span class="article-tag">Сорбция</span>
+                            </article>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ════════════════════════════════════════════════════════════
+                 PANEL 1 (LEFT-CENTER): Натуропатия и Аюрведа
+                 ════════════════════════════════════════════════════════════ -->
+            <section class="panel panel-naturo" id="panel-naturo">
+                <div class="panel-scroll">
+                    <div class="panel-content">
+
+                        <!-- Hero -->
+                        <div class="section-hero">
+                            <div class="badge">Древняя мудрость + Современная наука</div>
+                            <h1 class="section-title">Натуропатия и Аюрведа</h1>
+                            <p class="section-subtitle">Тысячелетние знания о гармонии тела и разума, подкрепленные современными исследованиями. Мы берем лучшее из обеих традиций.</p>
+                        </div>
+
+                        <!-- Block 1: What is Naturopathy -->
+                        <div class="content-block">
+                            <h2>Что такое натуропатия?</h2>
+                            <p>Натуропатия — это система оздоровления, основанная на вере в целительную силу природы (<em>Vis Medicatrix Naturae</em>). Она не борется с симптомами, а ищет и устраняет первопричину дисбаланса. Организм обладает врожденной способностью к самоисцелению — задача натуропата состоит в том, чтобы создать для этого правильные условия.</p>
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Принцип «Не навреди»</h4>
+                                        <p>Использование мягких, неинвазивных методов. Приоритет натуральных средств перед синтетическими.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Лечение причины, а не симптома</h4>
+                                        <p>Головная боль — это не дефицит обезболивающего. Натуропатия ищет корень: обезвоживание, токсины, стресс или дефицит нутриентов.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Человек как целостная система</h4>
+                                        <p>Тело, разум и дух — единое целое. Нельзя лечить желудок, игнорируя состояние психики и образ жизни.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: Ayurveda -->
+                        <div class="content-block">
+                            <h2>Аюрведа: наука о жизни</h2>
+                            <p>Аюрведа (санскр. «знание жизни») — одна из древнейших медицинских систем мира, зародившаяся более 5000 лет назад в Индии. Она рассматривает здоровье как баланс трех фундаментальных энергий — дош.</p>
+                            <div class="method-cards">
+                                <div class="method-card">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #DBEAFE, #BFDBFE); color: #2563EB;">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+                                    </div>
+                                    <h4>Вата</h4>
+                                    <p>Воздух и эфир. Движение, дыхание, нервная система. Дисбаланс → тревожность, сухость, бессонница.</p>
+                                </div>
+                                <div class="method-card">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #FEE2E2, #FECACA); color: #DC2626;">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/></svg>
+                                    </div>
+                                    <h4>Питта</h4>
+                                    <p>Огонь и вода. Пищеварение, метаболизм, интеллект. Дисбаланс → воспаления, раздражительность, кожные проблемы.</p>
+                                </div>
+                                <div class="method-card">
+                                    <div class="method-icon" style="background: linear-gradient(135deg, #D1FAE5, #A7F3D0); color: #059669;">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <h4>Капха</h4>
+                                    <p>Земля и вода. Структура, стабильность, иммунитет. Дисбаланс → вялость, набор веса, застойные процессы.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: Detox in traditions -->
+                        <div class="content-block highlight-block">
+                            <h2>Детокс в традиционных системах</h2>
+                            <p>Очищение тела — центральная практика во всех древних медицинских традициях. В аюрведе это называется <strong>Панчакарма</strong> (пять действий очищения), в натуропатии — <strong>элиминационная диета</strong> с последующим восстановлением.</p>
+                            <div class="insight-box">
+                                <p>Наш протокол Santiago объединяет эти подходы: мягкая элиминация патогенов (натуропатия) + восстановление баланса дош через питание и травы (аюрведа) + научно обоснованный протокол 5R (доказательная медицина).</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 4: Key Practices -->
+                        <div class="content-block">
+                            <h2>Ключевые практики оздоровления</h2>
+                            <div class="steps-grid">
+                                <div class="step-card">
+                                    <div class="step-number">01</div>
+                                    <h4>Диначарья (Режим дня)</h4>
+                                    <p>Просыпаться с рассветом, есть основной приём пищи в полдень (когда огонь пищеварения максимален), засыпать до 22:00.</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">02</div>
+                                    <h4>Агни (Пищеварительный огонь)</h4>
+                                    <p>Здоровье начинается с пищеварения. Слабый агни = непереваренная пища (ама) = токсины. Специи, тёплая вода и правильный режим усиливают агни.</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">03</div>
+                                    <h4>Расаяна (Омоложение)</h4>
+                                    <p>После очищения тело готово к восстановлению. Адаптогены (ашваганда, шатавари), питательные масла и регенеративные практики.</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-number">04</div>
+                                    <h4>Пранаяма (Дыхание)</h4>
+                                    <p>Контролируемое дыхание стимулирует блуждающий нерв, снижает кортизол и активирует парасимпатическую нервную систему.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 5: Bridge -->
+                        <div class="content-block">
+                            <h2>Почему это работает сегодня</h2>
+                            <p>Современная наука подтверждает то, что аюрведа знала тысячелетиями: хронический стресс разрушает пищеварение, токсическая нагрузка подавляет иммунитет, а режим дня напрямую влияет на гормональный фон и нейропластичность мозга.</p>
+                            <div class="two-col">
+                                <div class="info-card good">
+                                    <h3>Что подтвердила наука</h3>
+                                    <p>Антимикробные свойства горьких трав. Роль пищеварительных ферментов. Влияние циркадных ритмов на метаболизм. Ось «кишечник-мозг».</p>
+                                </div>
+                                <div class="info-card good">
+                                    <h3>Что мы используем</h3>
+                                    <p>Аюрведические принципы питания по дошам. Натуропатический подход к элиминации. Научный протокол восстановления микробиома.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ════════════════════════════════════════════════════════════
+                 PANEL 2 (CENTER): Главная страница (Маркетинговый хаб)
+                 ════════════════════════════════════════════════════════════ -->
+            <section class="panel panel-hero" id="panel-home">
+                <div class="panel-scroll">
+                    <div class="panel-content hero-content">
+
+                        <!-- Block 1: Philosophy -->
+                        <div class="hero-section">
+                            <div class="badge">Натуропатический детокс</div>
+                            <h1 class="hero-title">Станьте архитектором собственного здоровья.</h1>
+                            <p class="hero-subtitle">Мы верим, что ваше тело — это совершенная система, способная к самовосстановлению. Нужно лишь дать ему правильные инструменты.</p>
+                            <div class="info-box">
+                                <p>Детокс — это не экзекуция и не разовая акция. Это регулярная гигиена, которую необходимо проводить раз в полгода. Мы опираемся на глубокую научную экспертизу (нейробиологию и микробиом) в сочетании с мудростью натуропатии и аюрведы.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: Environment -->
+                        <div class="content-block">
+                            <h2>Современный мир — это вызов для вашей внутренней экосистемы.</h2>
+                            <p>Хронический стресс, обработанная еда, нарушение сна, экология — всё это бьет по вашему внутреннему миру. Многие не подозревают, что в их кишечнике живут «незваные гости» — паразиты разных видов, которые есть практически у каждого.</p>
+                            <p>Они влияют на наши желания (тяга к сладкому), уровень энергии и даже настроение. Мы объясняем биохимию, а не пугаем. Цель — очистить внутреннюю среду, чтобы создать условия, где болезнь просто не может существовать.</p>
+                        </div>
+
+                        <!-- Block 3: Symptoms -->
+                        <div class="content-block">
+                            <h2>Ваше тело говорит с вами. Вы слышите его?</h2>
+                            <div class="symptoms-grid">
+                                <div class="symptom-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12h8"/></svg>
+                                    <span>«Туман в мозге» и сложность с концентрацией</span>
+                                </div>
+                                <div class="symptom-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+                                    <span>Постоянная усталость, даже после сна</span>
+                                </div>
+                                <div class="symptom-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    <span>Проблемы с кожей (акне, высыпания)</span>
+                                </div>
+                                <div class="symptom-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    <span>Эмоциональные качели и потеря творческого ресурса</span>
+                                </div>
+                                <div class="symptom-item">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg>
+                                    <span>Плохая память и ощущение «потерянности»</span>
+                                </div>
+                            </div>
+                            <p class="positive-text">Это не ваша вина и не норма. Это сигнал о перегрузке. Мы приглашаем вас на прекрасный путь возвращения к себе настоящему — энергичному, креативному и продуктивному.</p>
+                        </div>
+
+                        <!-- Block 4: Method Santiago -->
+                        <div class="content-block">
+                            <h2>Экологичный путь к чистоте: Три вектора восстановления.</h2>
+                            <p>Мы не используем агрессивную химию. Наш метод — это мягкое очищение через:</p>
+                            <div class="method-cards">
+                                <div class="method-card">
+                                    <div class="method-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <h4>Горькие травы и настойка ПВЖМ</h4>
+                                    <p>Для нейтрализации патогенов и растворения их защитных оболочек.</p>
+                                </div>
+                                <div class="method-card">
+                                    <div class="method-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                    </div>
+                                    <h4>Специальный чай и живые ферменты</h4>
+                                    <p>Для восстановления слизистой и работы лимфы.</p>
+                                </div>
+                                <div class="method-card">
+                                    <div class="method-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                    </div>
+                                    <h4>Сорбенты (байндеры)</h4>
+                                    <p>Безопасное выведение токсинов как «губкой».</p>
+                                </div>
+                            </div>
+                            <div class="cta-row">
+                                <button class="btn-primary nav-link-btn" data-target="0">Узнать больше о Микробиоме
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <button class="btn-secondary nav-link-btn" data-target="4">Посмотреть состав набора
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Block 5: Personal Story -->
+                        <div class="content-block">
+                            <h2>От личного поиска к созданию сообщества.</h2>
+                            <p>Личный опыт борьбы за здоровье привел к открытию основ натуропатии. Первые результаты вдохновили делиться знаниями с друзьями, близкими, а затем и создавать целую экосистему Santiago Wellness Hub.</p>
+                            <div class="testimonials">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">&laquo;Вернулась ясность ума. Я наконец-то могу сосредоточиться на творчестве без постоянного тумана.&raquo;</p>
+                                    <span class="testimonial-author">— Участник программы</span>
+                                </div>
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">&laquo;Исчезла тяга к сахару. Это казалось невозможным, но через 2 недели я просто перестала хотеть сладкое.&raquo;</p>
+                                    <span class="testimonial-author">— Участник программы</span>
+                                </div>
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">&laquo;Появились силы на новые проекты. Энергия, которую я не чувствовал годами.&raquo;</p>
+                                    <span class="testimonial-author">— Участник программы</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Decorative shapes -->
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </section>
+
+
+            <!-- ════════════════════════════════════════════════════════════
+                 PANEL 3 (RIGHT): Сферы Жизни (Мотивация и Карта Жизни)
+                 ════════════════════════════════════════════════════════════ -->
+            <section class="panel panel-life" id="panel-life">
+                <div class="panel-scroll">
+                    <div class="panel-content">
+
+                        <!-- Block 1: Vision -->
+                        <div class="section-hero">
+                            <div class="badge">Путь к полноценной жизни</div>
+                            <h1 class="section-title">Жизнь может быть искусством.</h1>
+                            <p class="section-subtitle">Вы готовы стать творцом? Мы забыли, что развиваться, творить, строить отношения и достигать целей можно не через усталость и выгорание, а через искреннюю радость от процесса.</p>
+                        </div>
+
+                        <div class="content-block">
+                            <p class="large-text">Спорт, музыка, путешествия, любимое дело, финансы и глубокие отношения — всё это делает нас лучше. И самое главное — это доступно каждому, это весело и дает колоссальный заряд энергии, а не забирает её.</p>
+                        </div>
+
+                        <!-- Block 2: Need for start -->
+                        <div class="content-block">
+                            <h2>Где взять искру?</h2>
+                            <p>Мы понимаем, что человеку часто нужен старт. Мощный импульс и подзарядка, чтобы просто начать, а главное — не бросить, продолжать улучшать себя и становиться тем человеком, которым хочется быть. Трудно быть продуктивным, когда нет базовых сил.</p>
+                        </div>
+
+                        <!-- Block 3: Cleansing as foundation -->
+                        <div class="content-block highlight-block">
+                            <h2>Точка запуска</h2>
+                            <p>Чтобы появилась та самая искра, нужно начать с заботы о себе. Когда мы очищаем внутреннюю среду, наше тело становится чистым и насыщенным, а ум — осознанным и ясным. Именно отсюда берется сила, концентрация и креатив для достижения результатов.</p>
+                            <div class="insight-box">
+                                <p>В чистом теле вредные привычки отпадают сами собой. А это дает нам колоссальное количество свободного времени, энергии и новых возможностей просто быть собой!</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 4: Life Map / PDF Guide -->
+                        <div class="content-block">
+                            <h2>Ваша «Дорога» по 16 жизненным сферам</h2>
+                            <p>Чтобы вам было легко идти по этому пути, мы создали инспиративный и информативный гайд — вашу дорогу по 16 жизненным сферам:</p>
+                            <div class="spheres-grid">
+                                <div class="sphere-card">
+                                    <div class="sphere-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                    </div>
+                                    <h4>Физика и Энергия</h4>
+                                    <p>База для вашей «батарейки» — тело, сон, восстановление.</p>
+                                </div>
+                                <div class="sphere-card">
+                                    <div class="sphere-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+                                    </div>
+                                    <h4>Разум и Эмоции</h4>
+                                    <p>Ваш внутренний мир — когнитивная гигиена, творчество, радость.</p>
+                                </div>
+                                <div class="sphere-card">
+                                    <div class="sphere-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                    </div>
+                                    <h4>Системы и Ресурсы</h4>
+                                    <p>Ваша материальная опора — финансы, время, цифровой баланс.</p>
+                                </div>
+                                <div class="sphere-card">
+                                    <div class="sphere-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    </div>
+                                    <h4>Социум и Проявление</h4>
+                                    <p>Взаимодействие с миром — отношения, реализация, пространство.</p>
+                                </div>
+                                <div class="sphere-card sphere-card-wide">
+                                    <div class="sphere-icon">
+                                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    </div>
+                                    <h4>Смыслы</h4>
+                                    <p>Ваш вектор — философия и масштаб личности.</p>
+                                </div>
+                            </div>
+
+                            <!-- PDF CTA -->
+                            <div class="pdf-download-block">
+                                <button class="btn-download large" id="btn-pdf-lifemap">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Получить премиальный PDF-гайд «Карта Жизни»
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Block 5: Synergy -->
+                        <div class="content-block">
+                            <h2>Идем вместе</h2>
+                            <p>Идти по пути целостного саморазвития — это не только про здоровье, это про новые горизонты. Это возможность посоветовать этот путь друзьям и близким, вместе открывать новые активности и интересы. Это приведет к новым знакомствам, расширению ваших способностей и выведет качество жизни на совершенно другой уровень.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ════════════════════════════════════════════════════════════
+                 PANEL 4 (FAR RIGHT): Инструменты и Продукты (Практика)
+                 ════════════════════════════════════════════════════════════ -->
+            <section class="panel panel-tools" id="panel-tools">
+                <div class="panel-scroll">
+                    <div class="panel-content">
+
+                        <!-- Block 1: Intro -->
+                        <div class="section-hero">
+                            <div class="badge">Практика и Восстановление</div>
+                            <h1 class="section-title">Природа, усиленная наукой</h1>
+                            <p class="section-subtitle">Ваш арсенал восстановления. Мы создали комплексный набор, где каждый элемент усиливает действие другого. Это не просто добавки — это последовательная система очищения, питания и защиты вашего организма.</p>
+                        </div>
+
+                        <!-- Block 2: Product Showcase -->
+                        <div class="products-grid">
+
+                            <div class="product-card" data-product="herbs">
+                                <div class="product-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <h3>Горькие травы</h3>
+                                <p class="product-brief">Базовый антипаразитарный этап. Мягкая нейтрализация патогенов и грибков без агрессии для ЖКТ.</p>
+                                <button class="btn-detail" onclick="openPopup('herbs')">Подробнее о составе</button>
+                            </div>
+
+                            <div class="product-card" data-product="pvjm">
+                                <div class="product-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                </div>
+                                <h3>Настойка ПВЖМ</h3>
+                                <p class="product-brief">Утренняя поддержка. Уникальный фермент, способный растворять защитные оболочки паразитов и вирусов.</p>
+                                <button class="btn-detail" onclick="openPopup('pvjm')">Подробнее о свойствах</button>
+                            </div>
+
+                            <div class="product-card" data-product="enzymes">
+                                <div class="product-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                </div>
+                                <h3>Живые ферменты</h3>
+                                <p class="product-brief">Подготовка к пищеварению. Яблочный уксус для нормализации кислотности и качественного усвоения микроэлементов.</p>
+                                <button class="btn-detail" onclick="openPopup('enzymes')">Подробнее</button>
+                            </div>
+
+                            <div class="product-card" data-product="tea">
+                                <div class="product-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                                </div>
+                                <h3>Травяной чай «45 трав»</h3>
+                                <p class="product-brief">Глубокое питание и детокс. Пьется в течение дня. Очищает лимфу, питает клетки и идеально подходит для процедуры тюбажа.</p>
+                                <button class="btn-detail" onclick="openPopup('tea')">Подробнее о сборе</button>
+                            </div>
+
+                            <div class="product-card" data-product="sorbents">
+                                <div class="product-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                </div>
+                                <h3>Умные сорбенты</h3>
+                                <p class="product-brief">Безопасная эвакуация токсинов. Работают как природная губка, связывая и выводя продукты распада без вреда для слизистой.</p>
+                                <button class="btn-detail" onclick="openPopup('sorbents')">Как они работают</button>
+                            </div>
+
+                        </div>
+
+                        <!-- Block 3: Golden Rules -->
+                        <div class="content-block">
+                            <h2>Как это работает: Три золотых правила курса.</h2>
+                            <p>Полный протокол вы найдете в нашем PDF-гайде, но основа успеха держится на трех китах:</p>
+                            <div class="rules-grid">
+                                <div class="rule-card">
+                                    <div class="rule-number">1</div>
+                                    <h4>Чистое топливо (Диета)</h4>
+                                    <p>Убираем «пищевой шум» (сладкое, мучное, рафинированную еду). Основу рациона составляют овощи (квашеная капуста), зелень, кислые фрукты (грейпфрут, киви, ягоды). Главное — не переедать и ужинать за 3 часа до сна!</p>
+                                </div>
+                                <div class="rule-card">
+                                    <div class="rule-number">2</div>
+                                    <h4>Промывание системы</h4>
+                                    <p>Вода — ваш главный помощник. При дискомфорте или легком ознобе (нормальная реакция очищения), пейте больше чистой воды и используйте натуральные абсорбенты.</p>
+                                </div>
+                                <div class="rule-card">
+                                    <div class="rule-number">3</div>
+                                    <h4>Тюбаж печени (Глубокая очистка)</h4>
+                                    <p>Мощная, опциональная процедура для высвобождения застойной желчи. Выполняется с помощью магнезии, теплой грелки на правый бок и сбора «45 трав».</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 4: Video + PDF Instructions -->
+                        <div class="content-block">
+                            <h2>Инструкции</h2>
+                            <div class="instructions-split">
+                                <div class="instruction-section video-section">
+                                    <h3>Смотреть инструкцию</h3>
+                                    <div class="video-placeholder" id="video-container">
+                                        <div class="play-button">
+                                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                        </div>
+                                        <span>Видео-инструкция</span>
+                                    </div>
+                                    <p>Посмотрите короткое видео, где мы наглядно показываем, как правильно разводить сорбенты, заваривать чай и в какой последовательности принимать настойки.</p>
+                                </div>
+                                <div class="instruction-section pdf-section">
+                                    <h3>Полный протокол в вашем смартфоне</h3>
+                                    <p>Мы собрали все детали в одном месте:</p>
+                                    <ul class="pdf-features">
+                                        <li>Точные дозировки и тайминги приема (утро/день/вечер)</li>
+                                        <li>Подробное меню и списки продуктов</li>
+                                        <li>Пошаговый алгоритм процедуры тюбажа</li>
+                                    </ul>
+                                    <button class="btn-download" id="btn-pdf-protocol">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                        Скачать подробную инструкцию (PDF)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ MOBILE DOTS ═══════════════════════ -->
+    <div class="mobile-dots">
+        <button class="dot" data-target="0"></button>
+        <button class="dot" data-target="1"></button>
+        <button class="dot active" data-target="2"></button>
+        <button class="dot" data-target="3"></button>
+        <button class="dot" data-target="4"></button>
+    </div>
+
+    <!-- ═══════════════════════ PRODUCT POP-UP MODAL ═══════════════════════ -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-modal" id="popup-modal">
+            <button class="popup-close" id="popup-close" aria-label="Close popup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="popup-content" id="popup-content">
+                <!-- Dynamic content inserted by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
