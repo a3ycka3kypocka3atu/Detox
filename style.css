@@ -136,8 +136,8 @@ img {
     padding: 0 var(--space-lg);
     z-index: 1000;
     background-color: var(--color-primary);
-    background-image: url("data:image/svg+xml,%3Csvg width='600' height='72' viewBox='0 0 600 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3C!-- Hanging vine 1 --%3E%3Cpath d='M20 0 Q25 15 18 30 Q12 45 20 55' stroke='%234A7C5C' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M18 12 Q12 14 9 18' stroke='%234A7C5C' stroke-width='1' opacity='0.25'/%3E%3Cpath d='M18 12 Q14 8 10 9' stroke='%234A7C5C' stroke-width='1' opacity='0.25'/%3E%3Cpath d='M20 28 Q26 30 29 35' stroke='%234A7C5C' stroke-width='1' opacity='0.25'/%3E%3Cellipse cx='9' cy='18' rx='4' ry='2.5' fill='%234A7C5C' opacity='0.2' transform='rotate(-30 9 18)'/%3E%3Cellipse cx='10' cy='9' rx='3.5' ry='2' fill='%233D6B5A' opacity='0.18' transform='rotate(20 10 9)'/%3E%3Cellipse cx='29' cy='35' rx='4' ry='2.5' fill='%234A7C5C' opacity='0.2' transform='rotate(25 29 35)'/%3E%3C!-- Hanging vine 2 with tendrils --%3E%3Cpath d='M100 0 Q95 20 102 35 Q108 50 100 65' stroke='%233D6B5A' stroke-width='1.2' opacity='0.25'/%3E%3Cpath d='M102 18 Q108 20 112 25' stroke='%233D6B5A' stroke-width='0.8' opacity='0.2'/%3E%3Cpath d='M100 35 Q94 37 90 42' stroke='%233D6B5A' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='112' cy='25' rx='4' ry='2.5' fill='%234A7C5C' opacity='0.2' transform='rotate(30 112 25)'/%3E%3Cellipse cx='90' cy='42' rx='3.5' ry='2.5' fill='%233D6B5A' opacity='0.18' transform='rotate(-20 90 42)'/%3E%3Cpath d='M100 50 Q96 52 98 58 Q100 54 102 56' stroke='%237A9E7E' stroke-width='0.6' opacity='0.2'/%3E%3C!-- Thick liana --%3E%3Cpath d='M200 0 Q210 25 195 40 Q185 52 200 68' stroke='%232D4A3E' stroke-width='2' opacity='0.2'/%3E%3Cpath d='M195 15 Q188 12 183 15' stroke='%234A7C5C' stroke-width='1' opacity='0.22'/%3E%3Cellipse cx='183' cy='15' rx='5' ry='3' fill='%234A7C5C' opacity='0.2' transform='rotate(-15 183 15)'/%3E%3Cpath d='M200 32 Q207 28 213 30' stroke='%234A7C5C' stroke-width='1' opacity='0.22'/%3E%3Cellipse cx='213' cy='30' rx='4.5' ry='3' fill='%233D6B5A' opacity='0.18' transform='rotate(20 213 30)'/%3E%3Cpath d='M192 48 Q186 50 182 48 Q184 52 188 50' stroke='%237A9E7E' stroke-width='0.6' opacity='0.18'/%3E%3C!-- Drooping fern --%3E%3Cpath d='M310 0 Q315 12 308 28 Q302 42 310 55' stroke='%234A7C5C' stroke-width='1.3' opacity='0.25'/%3E%3Cpath d='M310 8 Q304 6 300 8' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cpath d='M310 8 Q316 6 320 8' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='300' cy='8' rx='3.5' ry='2' fill='%234A7C5C' opacity='0.18' transform='rotate(-10 300 8)'/%3E%3Cellipse cx='320' cy='8' rx='3.5' ry='2' fill='%234A7C5C' opacity='0.18' transform='rotate(10 320 8)'/%3E%3Cpath d='M308 22 Q302 20 298 22' stroke='%233D6B5A' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='298' cy='22' rx='4' ry='2.5' fill='%233D6B5A' opacity='0.18' transform='rotate(-25 298 22)'/%3E%3C!-- Vine with small leaves --%3E%3Cpath d='M420 0 Q425 18 418 32 Q412 48 420 62' stroke='%234A7C5C' stroke-width='1.4' opacity='0.25'/%3E%3Cpath d='M418 14 Q412 12 408 14' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cpath d='M420 28 Q426 26 430 28' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='408' cy='14' rx='4' ry='2.5' fill='%234A7C5C' opacity='0.2' transform='rotate(-20 408 14)'/%3E%3Cellipse cx='430' cy='28' rx='4' ry='2.5' fill='%233D6B5A' opacity='0.18' transform='rotate(15 430 28)'/%3E%3Cpath d='M415 42 Q410 44 412 50' stroke='%237A9E7E' stroke-width='0.5' opacity='0.18'/%3E%3C!-- Curling tendril --%3E%3Cpath d='M540 0 Q545 15 538 30 Q532 45 540 58' stroke='%233D6B5A' stroke-width='1.2' opacity='0.22'/%3E%3Cpath d='M538 20 Q532 18 528 20' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='528' cy='20' rx='3.5' ry='2' fill='%234A7C5C' opacity='0.18' transform='rotate(-15 528 20)'/%3E%3Cpath d='M540 38 Q546 36 550 38' stroke='%234A7C5C' stroke-width='0.8' opacity='0.2'/%3E%3Cellipse cx='550' cy='38' rx='4' ry='2.5' fill='%233D6B5A' opacity='0.18' transform='rotate(20 550 38)'/%3E%3Cpath d='M535 50 Q530 52 532 58 Q534 54 536 56' stroke='%237A9E7E' stroke-width='0.5' opacity='0.18'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 600px 72px;
+    background-image: url("data:image/svg+xml,%3Csvg width='800' height='72' viewBox='0 0 800 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='bark' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%235C3D2E'/%3E%3Cstop offset='100%25' stop-color='%23734B35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Main thick liana vine --%3E%3Cpath d='M0 38 Q40 20 80 35 Q130 52 180 30 Q240 10 300 32 Q360 55 420 28 Q480 5 540 35 Q600 58 660 30 Q720 8 800 38' stroke='%23734B35' stroke-width='5' opacity='0.3'/%3E%3Cpath d='M0 42 Q50 58 100 40 Q160 22 220 45 Q280 62 340 35 Q400 12 460 42 Q520 65 580 38 Q640 15 700 45 Q760 62 800 42' stroke='%235C3D2E' stroke-width='3.5' opacity='0.25'/%3E%3C!-- Thinner twisting vine --%3E%3Cpath d='M0 32 Q60 50 120 28 Q180 10 240 38 Q300 58 360 30 Q420 8 480 38 Q540 60 600 32 Q660 10 720 38 Q780 55 800 35' stroke='%23856B50' stroke-width='2' opacity='0.2'/%3E%3C!-- Tropical leaves — large, pointy, lush --%3E%3Cg fill='%233D6B5A' opacity='0.35'%3E%3Cpath d='M50 28 Q40 18 30 22 Q38 28 35 35 Q45 30 50 28Z'/%3E%3Cpath d='M55 28 Q60 16 72 18 Q62 26 65 34 Q58 30 55 28Z'/%3E%3Cpath d='M130 45 Q120 55 108 52 Q118 46 115 38 Q125 42 130 45Z'/%3E%3Cpath d='M135 42 Q142 55 155 52 Q145 44 148 36 Q140 40 135 42Z'/%3E%3Cpath d='M210 25 Q200 14 188 18 Q198 24 195 32 Q205 28 210 25Z'/%3E%3Cpath d='M215 22 Q225 12 238 16 Q228 24 232 32 Q220 26 215 22Z'/%3E%3Cpath d='M290 38 Q278 48 268 44 Q278 38 275 30 Q285 34 290 38Z'/%3E%3Cpath d='M295 35 Q305 48 318 44 Q308 36 312 28 Q300 32 295 35Z'/%3E%3Cpath d='M370 22 Q358 12 348 16 Q358 22 355 30 Q365 26 370 22Z'/%3E%3Cpath d='M375 20 Q385 8 398 12 Q388 20 392 28 Q380 24 375 20Z'/%3E%3Cpath d='M450 40 Q438 52 426 48 Q436 42 433 34 Q443 38 450 40Z'/%3E%3Cpath d='M455 38 Q465 50 478 46 Q468 38 472 30 Q460 34 455 38Z'/%3E%3Cpath d='M530 28 Q518 16 508 20 Q518 26 515 34 Q525 30 530 28Z'/%3E%3Cpath d='M535 25 Q548 14 558 18 Q548 26 552 34 Q540 28 535 25Z'/%3E%3Cpath d='M620 42 Q608 54 596 50 Q606 44 603 36 Q613 40 620 42Z'/%3E%3Cpath d='M625 40 Q635 52 648 48 Q638 40 642 32 Q630 36 625 40Z'/%3E%3Cpath d='M710 25 Q698 14 688 18 Q698 24 695 32 Q705 28 710 25Z'/%3E%3Cpath d='M715 22 Q728 12 738 16 Q728 24 732 32 Q720 26 715 22Z'/%3E%3C/g%3E%3C!-- Darker leaf accents --%3E%3Cg fill='%232D4A3E' opacity='0.2'%3E%3Cpath d='M85 35 Q78 25 68 28 Q76 34 73 40 Q80 37 85 35Z'/%3E%3Cpath d='M170 32 Q178 20 190 24 Q180 32 184 40 Q175 35 170 32Z'/%3E%3Cpath d='M330 42 Q322 52 312 48 Q320 42 317 34 Q326 38 330 42Z'/%3E%3Cpath d='M500 35 Q508 22 520 26 Q510 34 514 42 Q505 37 500 35Z'/%3E%3Cpath d='M580 40 Q572 50 562 46 Q570 40 567 32 Q576 36 580 40Z'/%3E%3Cpath d='M760 38 Q768 48 778 44 Q770 38 773 30 Q764 34 760 38Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 800px 72px;
     background-repeat: repeat-x;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: var(--transition-smooth);
@@ -1434,18 +1434,18 @@ body {
     border-radius: var(--radius-lg);
 }
 
-/* Side navigation zones — click to switch panels (PC only) */
+/* Side navigation zones — always subtly visible, right next to text */
 .side-nav-zone {
     position: fixed;
     top: var(--navbar-height);
-    width: 80px;
+    width: 60px;
     height: calc(100vh - var(--navbar-height));
     z-index: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
+    opacity: 0.4;
     transition: opacity 0.3s ease;
 }
 
@@ -1454,22 +1454,37 @@ body {
 }
 
 .side-nav-zone--left {
-    left: 0;
-    background: linear-gradient(to right, rgba(45, 74, 62, 0.08), transparent);
+    left: calc(50% - 500px);
+    background: linear-gradient(to right, rgba(45, 74, 62, 0.06), transparent);
 }
 
 .side-nav-zone--right {
-    right: 0;
-    background: linear-gradient(to left, rgba(45, 74, 62, 0.08), transparent);
+    right: calc(50% - 500px);
+    background: linear-gradient(to left, rgba(45, 74, 62, 0.06), transparent);
 }
 
 .side-nav-zone svg {
     color: var(--color-primary);
-    opacity: 0.5;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(45, 74, 62, 0.3));
+}
+
+.side-nav-zone:hover svg {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(45, 74, 62, 0.5));
 }
 
 .side-nav-zone.hidden {
     display: none;
+}
+
+@media (max-width: 1100px) {
+    .side-nav-zone--left {
+        left: 0;
+    }
+    .side-nav-zone--right {
+        right: 0;
+    }
 }
 
 @media (max-width: 768px) {
