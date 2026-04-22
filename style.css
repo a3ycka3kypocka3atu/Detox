@@ -14,12 +14,19 @@
     --color-secondary: #C4B5FD;
     --color-accent: #059669;
     --color-accent-light: #D1FAE5;
+    
+    /* ── Botanical Additions ── */
+    --color-flower-blue: #60A5FA;
+    --color-flower-blue-light: #DBEAFE;
+    --color-herb-sage: #4B5563;
+    --color-herb-sage-light: #9CA3AF;
+    
     --color-background: #FAF5FF;
-    --color-foreground: #4C1D95;
+    --color-foreground: #2E1065;
     --color-muted: #F3F0FF;
     --color-border: #EDE9FE;
-    --color-text: #3B1F6E;
-    --color-text-light: #7C6FA0;
+    --color-text: #2A1758;
+    --color-text-light: #6D28D9;
     --color-card: #FFFFFF;
     --color-destructive: #DC2626;
 
@@ -1428,4 +1435,110 @@ img {
     .hero-title {
         font-size: 1.8rem;
     }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTANICAL & NATURE DESIGNS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Subtle floral texture for the entire page or panels */
+body {
+    background-color: var(--color-background);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50 Q30 30 50 50 T90 50' stroke='%23C4B5FD' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%2360A5FA' opacity='0.2'/%3E%3Cpath d='M30 80 Q50 60 70 80 T110 80' stroke='%234B5563' stroke-width='0.3' fill='none' opacity='0.2'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+}
+
+/* Animations for nature elements */
+@keyframes sway {
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
+}
+
+@keyframes bloom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+/* Button blooming effect */
+.btn-primary, .btn-download {
+    position: relative;
+    overflow: hidden;
+    z-index: 2; /* Keep above backgrounds */
+}
+
+.btn-primary:hover, .btn-download:hover {
+    animation: bloom 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-flower-blue));
+    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
+}
+
+.btn-secondary:hover {
+    animation: bloom 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    border-color: var(--color-flower-blue);
+    color: var(--color-flower-blue);
+    background-color: rgba(96, 165, 250, 0.05);
+}
+
+/* Footer Botanical Scene */
+.footer-botanical {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-image: url("data:image/svg+xml,%3Csvg width='1200' height='120' viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='none' stroke='%234B5563' stroke-width='1.5' stroke-linecap='round' opacity='0.4'%3E%3C!-- Grass --%3E%3Cpath d='M10 120 Q15 90 20 120 M40 120 Q50 80 55 120 M90 120 Q95 70 105 120 M140 120 Q150 100 160 120 M180 120 Q185 85 190 120 M220 120 Q230 60 240 120 M270 120 Q280 90 290 120 M310 120 Q320 70 330 120 M360 120 Q365 100 375 120 M400 120 Q410 80 420 120 M450 120 Q460 60 470 120 M500 120 Q510 90 520 120 M550 120 Q560 70 570 120 M590 120 Q600 100 610 120 M640 120 Q650 80 660 120 M680 120 Q690 90 700 120 M730 120 Q740 60 750 120 M780 120 Q790 100 800 120 M820 120 Q830 80 840 120 M870 120 Q880 70 890 120 M910 120 Q920 90 930 120 M950 120 Q960 60 970 120 M990 120 Q1000 100 1010 120 M1040 120 Q1050 80 1060 120 M1090 120 Q1100 70 1110 120 M1130 120 Q1140 90 1150 120 M1170 120 Q1180 60 1190 120' /%3E%3C!-- Herbs & Flowers --%3E%3Cg stroke='%2360A5FA' stroke-width='1.2' opacity='0.7'%3E%3Cpath d='M50 120 Q60 50 70 40' /%3E%3Ccircle cx='70' cy='40' r='3' fill='%23DBEAFE'/%3E%3Cpath d='M250 120 Q270 30 280 20' /%3E%3Ccircle cx='280' cy='20' r='4' fill='%23DBEAFE'/%3E%3Cpath d='M480 120 Q490 40 510 30' /%3E%3Ccircle cx='510' cy='30' r='3' fill='%23DBEAFE'/%3E%3Cpath d='M750 120 Q760 30 780 20' /%3E%3Ccircle cx='780' cy='20' r='4' fill='%23DBEAFE'/%3E%3Cpath d='M980 120 Q990 50 1010 40' /%3E%3Ccircle cx='1010' cy='40' r='3' fill='%23DBEAFE'/%3E%3C/g%3E%3Cg stroke='%238B5CF6' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M150 120 Q160 60 170 50' /%3E%3Ccircle cx='170' cy='50' r='2' fill='%23C4B5FD'/%3E%3Cpath d='M350 120 Q360 50 380 40' /%3E%3Ccircle cx='380' cy='40' r='3' fill='%23C4B5FD'/%3E%3Cpath d='M650 120 Q660 60 670 50' /%3E%3Ccircle cx='670' cy='50' r='2' fill='%23C4B5FD'/%3E%3Cpath d='M850 120 Q860 40 880 30' /%3E%3Ccircle cx='880' cy='30' r='3' fill='%23C4B5FD'/%3E%3Cpath d='M1080 120 Q1090 60 1100 50' /%3E%3Ccircle cx='1100' cy='50' r='2' fill='%23C4B5FD'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto 100%;
+    z-index: 0;
+    pointer-events: none;
+    animation: sway 8s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+}
+
+/* Make sure panel content is above footer botanical */
+.panel-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Floral accents replacing abstract shapes */
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    z-index: 0;
+    animation: sway 9s ease-in-out infinite alternate;
+}
+.shape-1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100 Q40 50 20 20 M50 100 Q60 50 80 20 M50 100 Q50 40 50 10' stroke='%2360A5FA' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='20' cy='20' r='5' fill='%23DBEAFE' opacity='0.5'/%3E%3Ccircle cx='80' cy='20' r='5' fill='%23DBEAFE' opacity='0.5'/%3E%3Ccircle cx='50' cy='10' r='6' fill='%23DBEAFE' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: cover;
+}
+
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    z-index: 0;
+    animation: sway 7s ease-in-out infinite alternate-reverse;
+}
+.shape-2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100 Q30 60 10 40 M50 100 Q70 60 90 40' stroke='%234B5563' stroke-width='1.5' fill='none' opacity='0.25'/%3E%3Cpath d='M10 40 Q20 30 30 40 T10 40' fill='%239CA3AF' opacity='0.3'/%3E%3Cpath d='M90 40 Q80 30 70 40 T90 40' fill='%239CA3AF' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: cover;
 }
