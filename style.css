@@ -158,6 +158,31 @@ img {
     text-align: center;
 }
 
+/* Language toggle button */
+.lang-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    padding: 4px 10px;
+    font-size: 1rem;
+    line-height: 1;
+    transition: var(--transition-fast);
+    margin-left: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.lang-flag {
+    font-size: 1.1rem;
+}
+
 .logo-btn {
     font-family: var(--font-heading);
     font-size: 1.6rem;

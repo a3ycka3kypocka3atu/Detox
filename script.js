@@ -230,6 +230,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ═══════════════════════════════════════════
+    // LANGUAGE SWITCHER (RU ↔ UA)
+    // ═══════════════════════════════════════════
+
+    const langToggle = document.getElementById('lang-toggle');
+    let currentLang = localStorage.getItem('santiago-lang') || 'ru';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('santiago-lang', lang);
+
+        // Update flag
+        const flag = langToggle.querySelector('.lang-flag');
+        flag.textContent = lang === 'ru' ? '🇺🇦' : '🇷🇺'; // Show the OTHER flag (click to switch to)
+        langToggle.title = lang === 'ru' ? 'Змінити мову на українську' : 'Переключить язык на русский';
+
+        // Swap all text with data-lang attributes
+        document.querySelectorAll('[data-lang-ru][data-lang-ua]').forEach(el => {
+            el.textContent = el.getAttribute(`data-lang-${lang}`);
+        });
+
+        // Swap PDF download links
+        document.querySelectorAll('[data-pdf-ru][data-pdf-ua]').forEach(link => {
+            link.href = link.getAttribute(`data-pdf-${lang}`);
+        });
+
+        // Update html lang attribute
+        document.documentElement.lang = lang === 'ua' ? 'uk' : 'ru';
+    }
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLang === 'ru' ? 'ua' : 'ru');
+        });
+
+        // Apply saved language on load
+        setLanguage(currentLang);
+    }
+
+    // ═══════════════════════════════════════════
     // INITIAL STATE
     // ═══════════════════════════════════════════
 
