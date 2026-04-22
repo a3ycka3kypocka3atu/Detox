@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panels[index]) {
             panels[index].scrollTop = 0;
         }
+
+        // Update side nav arrows visibility
+        if (typeof updateSideNav === 'function') updateSideNav();
     }
 
     // Nav button clicks
@@ -67,6 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
             goToSlide(target);
         });
     });
+
+    // ═══════════════════════════════════════════
+    // SIDE NAV ZONES (PC — click borders to switch panels)
+    // ═══════════════════════════════════════════
+
+    const sideNavLeft = document.getElementById('side-nav-left');
+    const sideNavRight = document.getElementById('side-nav-right');
+
+    function updateSideNav() {
+        if (!sideNavLeft || !sideNavRight) return;
+        sideNavLeft.classList.toggle('hidden', currentSlide === 0);
+        sideNavRight.classList.toggle('hidden', currentSlide === PANEL_COUNT - 1);
+    }
+
+    if (sideNavLeft) {
+        sideNavLeft.addEventListener('click', () => {
+            if (currentSlide > 0) goToSlide(currentSlide - 1);
+        });
+    }
+
+    if (sideNavRight) {
+        sideNavRight.addEventListener('click', () => {
+            if (currentSlide < PANEL_COUNT - 1) goToSlide(currentSlide + 1);
+        });
+    }
 
     // ═══════════════════════════════════════════
     // TOUCH / SWIPE SUPPORT
