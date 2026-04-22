@@ -1,34 +1,35 @@
 /* ═══════════════════════════════════════════════════════════════
    SANTIAGO DETOX HUB — Design System
-   Style: Exaggerated Minimalism + Wellness
+   Style: Organic Biophilic + Nature Distilled
    Fonts: Lora (headings) + Raleway (body)
-   Colors: Lavender + Emerald Wellness
+   Colors: Warm Cream + Forest Green + Golden Amber
    ═══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* ── Core Palette ── */
-    --color-primary: #8B5CF6;
+    /* ── Core Palette — Earthy Botanical ── */
+    --color-primary: #2D4A3E;
     --color-on-primary: #FFFFFF;
-    --color-secondary: #C4B5FD;
-    --color-accent: #059669;
-    --color-accent-light: #D1FAE5;
-    
-    /* ── Botanical Additions ── */
-    --color-flower-blue: #60A5FA;
-    --color-flower-blue-light: #DBEAFE;
-    --color-herb-sage: #4B5563;
-    --color-herb-sage-light: #9CA3AF;
-    
-    --color-background: #FAF5FF;
-    --color-foreground: #2E1065;
-    --color-muted: #F3F0FF;
-    --color-border: #EDE9FE;
-    --color-text: #2A1758;
-    --color-text-light: #6D28D9;
+    --color-secondary: #3D6B5A;
+    --color-accent: #C8A951;
+    --color-accent-light: #F5EDCE;
+
+    /* ── Botanical Tones ── */
+    --color-herb-deep: #1B3A2D;
+    --color-herb-leaf: #4A7C5C;
+    --color-herb-sage: #7A9E7E;
+    --color-flower-warm: #D4A847;
+    --color-flower-blush: #E8C8A0;
+
+    --color-background: #F5F0E6;
+    --color-foreground: #1B3A2D;
+    --color-muted: #EDE8DC;
+    --color-border: #DDD5C4;
+    --color-text: #3A3328;
+    --color-text-light: #6B6152;
     --color-card: #FFFFFF;
-    --color-destructive: #DC2626;
+    --color-destructive: #B44D3B;
 
     /* ── Spacing ── */
     --space-xs: 0.5rem;
@@ -50,15 +51,15 @@
     --font-body: 'Raleway', 'Segoe UI', sans-serif;
 
     /* ── Transitions ── */
-    --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     --transition-slide: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 
-    /* ── Shadows ── */
-    --shadow-sm: 0 2px 8px rgba(139, 92, 246, 0.06);
-    --shadow-md: 0 8px 30px rgba(139, 92, 246, 0.08);
-    --shadow-lg: 0 20px 60px rgba(139, 92, 246, 0.12);
-    --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.15);
+    /* ── Shadows — warm earthy tones ── */
+    --shadow-sm: 0 2px 8px rgba(59, 51, 40, 0.06);
+    --shadow-md: 0 8px 30px rgba(59, 51, 40, 0.08);
+    --shadow-lg: 0 20px 60px rgba(59, 51, 40, 0.12);
+    --shadow-glow: 0 0 40px rgba(45, 74, 62, 0.15);
 
     /* ── Layout ── */
     --panel-count: 5;
@@ -134,10 +135,8 @@ img {
     align-items: center;
     padding: 0 var(--space-lg);
     z-index: 1000;
-    background: rgba(250, 245, 255, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(237, 233, 254, 0.6);
+    background: var(--color-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: var(--transition-smooth);
 }
 
@@ -160,7 +159,7 @@ img {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-accent-light);
     background: none;
     border: none;
     cursor: pointer;
@@ -179,7 +178,7 @@ img {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: var(--color-accent);
     transition: width 0.3s ease;
 }
 
@@ -189,15 +188,16 @@ img {
 
 .logo-btn:hover {
     transform: scale(1.03);
+    color: var(--color-accent);
 }
 
 .nav-btn {
     background: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: var(--font-body);
     font-weight: 500;
     font-size: 0.9rem;
-    color: var(--color-text-light);
+    color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
     padding: 0.6rem 1.2rem;
     border-radius: var(--radius-full);
@@ -207,13 +207,16 @@ img {
 }
 
 .nav-btn:hover {
-    background-color: var(--color-muted);
-    color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 .nav-btn.active {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
+    background-color: var(--color-accent);
+    color: var(--color-herb-deep);
+    border-color: var(--color-accent);
+    font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -292,9 +295,9 @@ img {
 
 .badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--color-muted), var(--color-border));
-    color: var(--color-primary);
-    padding: 0.45rem 1.4rem;
+    background: var(--color-primary);
+    color: var(--color-accent-light);
+    padding: 0.5rem 1.6rem;
     border-radius: var(--radius-full);
     font-weight: 600;
     font-size: 0.8rem;
@@ -365,13 +368,13 @@ img {
 
 .positive-text {
     font-size: 1.1rem;
-    color: var(--color-accent);
+    color: var(--color-primary);
     font-weight: 500;
     margin-top: var(--space-md);
     padding: var(--space-md);
-    background: var(--color-accent-light);
+    background: rgba(45, 74, 62, 0.06);
     border-radius: var(--radius-md);
-    border-left: 4px solid var(--color-accent);
+    border-left: 4px solid var(--color-primary);
 }
 
 /* Info Box */
@@ -391,7 +394,7 @@ img {
 
 /* Highlight Block */
 .highlight-block {
-    background: linear-gradient(135deg, var(--color-muted), rgba(196, 181, 253, 0.15));
+    background: linear-gradient(135deg, var(--color-muted), rgba(45, 74, 62, 0.06));
     padding: var(--space-xl);
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border);
@@ -443,21 +446,21 @@ img {
 }
 
 .info-card.good {
-    background: linear-gradient(135deg, #D1FAE5, #ECFDF5);
-    border: 1px solid rgba(5, 150, 105, 0.2);
+    background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+    border: 1px solid rgba(45, 74, 62, 0.15);
 }
 
 .info-card.good h3 {
-    color: #065F46;
+    color: var(--color-herb-deep);
 }
 
 .info-card.bad {
-    background: linear-gradient(135deg, #FEE2E2, #FFF1F2);
-    border: 1px solid rgba(220, 38, 38, 0.15);
+    background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
+    border: 1px solid rgba(200, 169, 81, 0.25);
 }
 
 .info-card.bad h3 {
-    color: #991B1B;
+    color: #8B6914;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -584,7 +587,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-muted), var(--color-border));
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
     border-radius: var(--radius-md);
     color: var(--color-primary);
 }
@@ -686,7 +689,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-muted), var(--color-border));
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
     border-radius: var(--radius-md);
     color: var(--color-primary);
     margin-bottom: var(--space-sm);
@@ -810,9 +813,9 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-accent-light), #A7F3D0);
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
     border-radius: var(--radius-md);
-    color: var(--color-accent);
+    color: var(--color-primary);
 }
 
 .sphere-card h4 {
@@ -871,7 +874,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-muted), var(--color-border));
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
     border-radius: var(--radius-lg);
     color: var(--color-primary);
     margin-bottom: var(--space-sm);
@@ -967,7 +970,7 @@ img {
 .video-placeholder {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, var(--color-foreground), #6D28D9);
+    background: linear-gradient(135deg, var(--color-foreground), var(--color-secondary));
     border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
@@ -1033,7 +1036,7 @@ img {
 
 .cta-block {
     text-align: center;
-    background: linear-gradient(135deg, var(--color-muted), rgba(196, 181, 253, 0.2));
+    background: linear-gradient(135deg, var(--color-muted), rgba(45, 74, 62, 0.06));
     padding: var(--space-xl);
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-border);
@@ -1054,7 +1057,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: linear-gradient(135deg, var(--color-primary), #7C3AED);
+    background: var(--color-primary);
     color: var(--color-on-primary);
     border: none;
     padding: 1rem 2rem;
@@ -1064,12 +1067,13 @@ img {
     cursor: pointer;
     transition: var(--transition-fast);
     font-family: var(--font-body);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 8px 25px rgba(45, 74, 62, 0.25);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
+    background: var(--color-herb-deep);
+    box-shadow: 0 12px 35px rgba(45, 74, 62, 0.35);
 }
 
 .btn-secondary {
@@ -1089,7 +1093,8 @@ img {
 }
 
 .btn-secondary:hover {
-    background: var(--color-muted);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
     transform: translateY(-2px);
 }
 
@@ -1097,8 +1102,8 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: linear-gradient(135deg, var(--color-accent), #047857);
-    color: var(--color-on-primary);
+    background: var(--color-accent);
+    color: var(--color-herb-deep);
     border: none;
     padding: 1rem 2rem;
     font-size: 0.95rem;
@@ -1107,12 +1112,13 @@ img {
     cursor: pointer;
     transition: var(--transition-fast);
     font-family: var(--font-body);
-    box-shadow: 0 8px 25px rgba(5, 150, 105, 0.25);
+    box-shadow: 0 8px 25px rgba(200, 169, 81, 0.25);
 }
 
 .btn-download:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(5, 150, 105, 0.35);
+    background: var(--color-flower-warm);
+    box-shadow: 0 12px 35px rgba(200, 169, 81, 0.35);
 }
 
 .btn-download.large {
@@ -1123,7 +1129,7 @@ img {
 .btn-detail {
     background: var(--color-muted);
     color: var(--color-primary);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-primary);
     padding: 0.6rem 1.4rem;
     font-size: 0.85rem;
     font-weight: 600;
@@ -1151,11 +1157,11 @@ img {
     transform: translateX(-50%);
     gap: 0.8rem;
     z-index: 1000;
-    background: rgba(250, 245, 255, 0.85);
+    background: rgba(45, 74, 62, 0.9);
     backdrop-filter: blur(12px);
     padding: 0.6rem 1.2rem;
     border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .dot {
@@ -1169,9 +1175,9 @@ img {
 }
 
 .dot.active {
-    background-color: var(--color-primary);
+    background-color: var(--color-accent);
     transform: scale(1.4);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 10px rgba(200, 169, 81, 0.5);
 }
 
 .dot:hover {
@@ -1185,7 +1191,7 @@ img {
 .popup-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(76, 29, 149, 0.4);
+    background: rgba(27, 58, 45, 0.5);
     backdrop-filter: blur(8px);
     z-index: 2000;
     display: flex;
@@ -1257,31 +1263,7 @@ img {
    DECORATIVE SHAPES
    ═══════════════════════════════════════════════════════════════ */
 
-.shape {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.shape-1 {
-    width: 500px;
-    height: 500px;
-    top: -150px;
-    left: -200px;
-    background: linear-gradient(135deg, var(--color-secondary), var(--color-background));
-    opacity: 0.4;
-}
-
-.shape-2 {
-    width: 600px;
-    height: 600px;
-    bottom: -250px;
-    right: -150px;
-    background: linear-gradient(135deg, var(--color-accent-light), rgba(5, 150, 105, 0.2));
-    opacity: 0.3;
-}
+/* Decorative Shapes — overridden by Botanical section below */
 
 /* ═══════════════════════════════════════════════════════════════
    ANIMATIONS
@@ -1438,107 +1420,74 @@ img {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   BOTANICAL & NATURE DESIGNS
+   BOTANICAL & NATURE DESIGNS — Earthy Organic
    ═══════════════════════════════════════════════════════════════ */
 
-/* Subtle floral texture for the entire page or panels */
+/* Botanical wallpaper pattern for entire page */
 body {
     background-color: var(--color-background);
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50 Q30 30 50 50 T90 50' stroke='%23C4B5FD' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%2360A5FA' opacity='0.2'/%3E%3Cpath d='M30 80 Q50 60 70 80 T110 80' stroke='%234B5563' stroke-width='0.3' fill='none' opacity='0.2'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Herb stem 1 --%3E%3Cpath d='M30 200 Q35 160 40 130' stroke='%237A9E7E' stroke-width='1' fill='none' opacity='0.18'/%3E%3Cpath d='M40 130 Q30 125 25 115' stroke='%237A9E7E' stroke-width='0.8' fill='none' opacity='0.15'/%3E%3Cpath d='M40 130 Q50 125 55 115' stroke='%237A9E7E' stroke-width='0.8' fill='none' opacity='0.15'/%3E%3Cpath d='M40 145 Q28 140 22 132' stroke='%237A9E7E' stroke-width='0.8' fill='none' opacity='0.12'/%3E%3Cpath d='M40 145 Q52 140 58 132' stroke='%237A9E7E' stroke-width='0.8' fill='none' opacity='0.12'/%3E%3C!-- Small flower --%3E%3Ccircle cx='40' cy='125' r='3' fill='%23C8A951' opacity='0.15'/%3E%3Ccircle cx='40' cy='125' r='1.5' fill='%23D4A847' opacity='0.2'/%3E%3C!-- Herb stem 2 --%3E%3Cpath d='M140 0 Q145 40 150 70' stroke='%234A7C5C' stroke-width='1' fill='none' opacity='0.15'/%3E%3Cpath d='M150 50 Q140 45 135 38' stroke='%234A7C5C' stroke-width='0.7' fill='none' opacity='0.12'/%3E%3Cpath d='M150 50 Q160 45 165 38' stroke='%234A7C5C' stroke-width='0.7' fill='none' opacity='0.12'/%3E%3C!-- Tiny blossom --%3E%3Ccircle cx='150' cy='70' r='2.5' fill='%23E8C8A0' opacity='0.18'/%3E%3C!-- Leaf scatter --%3E%3Cellipse cx='100' cy='100' rx='4' ry='2' fill='%237A9E7E' opacity='0.08' transform='rotate(45 100 100)'/%3E%3Cellipse cx='170' cy='160' rx='3' ry='1.5' fill='%234A7C5C' opacity='0.08' transform='rotate(-30 170 160)'/%3E%3Cellipse cx='70' cy='40' rx='3.5' ry='1.8' fill='%237A9E7E' opacity='0.06' transform='rotate(20 70 40)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
 }
 
 /* Animations for nature elements */
 @keyframes sway {
-    0%, 100% { transform: rotate(-1.5deg); }
-    50% { transform: rotate(1.5deg); }
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
 }
 
-@keyframes bloom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.03); }
+@keyframes bloomBtn {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-3px) scale(1.02); }
 }
 
-/* Button blooming effect */
-.btn-primary, .btn-download {
-    position: relative;
-    overflow: hidden;
-    z-index: 2; /* Keep above backgrounds */
-}
-
-.btn-primary:hover, .btn-download:hover {
-    animation: bloom 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-flower-blue));
-    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
-}
-
-.btn-secondary:hover {
-    animation: bloom 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    border-color: var(--color-flower-blue);
-    color: var(--color-flower-blue);
-    background-color: rgba(96, 165, 250, 0.05);
-}
-
-/* Footer Botanical Scene */
+/* Footer Botanical Scene — herbs and wildflowers growing from bottom */
 .footer-botanical {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 120px;
-    background-image: url("data:image/svg+xml,%3Csvg width='1200' height='120' viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='none' stroke='%234B5563' stroke-width='1.5' stroke-linecap='round' opacity='0.4'%3E%3C!-- Grass --%3E%3Cpath d='M10 120 Q15 90 20 120 M40 120 Q50 80 55 120 M90 120 Q95 70 105 120 M140 120 Q150 100 160 120 M180 120 Q185 85 190 120 M220 120 Q230 60 240 120 M270 120 Q280 90 290 120 M310 120 Q320 70 330 120 M360 120 Q365 100 375 120 M400 120 Q410 80 420 120 M450 120 Q460 60 470 120 M500 120 Q510 90 520 120 M550 120 Q560 70 570 120 M590 120 Q600 100 610 120 M640 120 Q650 80 660 120 M680 120 Q690 90 700 120 M730 120 Q740 60 750 120 M780 120 Q790 100 800 120 M820 120 Q830 80 840 120 M870 120 Q880 70 890 120 M910 120 Q920 90 930 120 M950 120 Q960 60 970 120 M990 120 Q1000 100 1010 120 M1040 120 Q1050 80 1060 120 M1090 120 Q1100 70 1110 120 M1130 120 Q1140 90 1150 120 M1170 120 Q1180 60 1190 120' /%3E%3C!-- Herbs & Flowers --%3E%3Cg stroke='%2360A5FA' stroke-width='1.2' opacity='0.7'%3E%3Cpath d='M50 120 Q60 50 70 40' /%3E%3Ccircle cx='70' cy='40' r='3' fill='%23DBEAFE'/%3E%3Cpath d='M250 120 Q270 30 280 20' /%3E%3Ccircle cx='280' cy='20' r='4' fill='%23DBEAFE'/%3E%3Cpath d='M480 120 Q490 40 510 30' /%3E%3Ccircle cx='510' cy='30' r='3' fill='%23DBEAFE'/%3E%3Cpath d='M750 120 Q760 30 780 20' /%3E%3Ccircle cx='780' cy='20' r='4' fill='%23DBEAFE'/%3E%3Cpath d='M980 120 Q990 50 1010 40' /%3E%3Ccircle cx='1010' cy='40' r='3' fill='%23DBEAFE'/%3E%3C/g%3E%3Cg stroke='%238B5CF6' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M150 120 Q160 60 170 50' /%3E%3Ccircle cx='170' cy='50' r='2' fill='%23C4B5FD'/%3E%3Cpath d='M350 120 Q360 50 380 40' /%3E%3Ccircle cx='380' cy='40' r='3' fill='%23C4B5FD'/%3E%3Cpath d='M650 120 Q660 60 670 50' /%3E%3Ccircle cx='670' cy='50' r='2' fill='%23C4B5FD'/%3E%3Cpath d='M850 120 Q860 40 880 30' /%3E%3Ccircle cx='880' cy='30' r='3' fill='%23C4B5FD'/%3E%3Cpath d='M1080 120 Q1090 60 1100 50' /%3E%3Ccircle cx='1100' cy='50' r='2' fill='%23C4B5FD'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    height: 140px;
+    background-image: url("data:image/svg+xml,%3Csvg width='1200' height='140' viewBox='0 0 1200 140' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='none' stroke-linecap='round'%3E%3C!-- Grass blades --%3E%3Cg stroke='%234A7C5C' stroke-width='1.2' opacity='0.22'%3E%3Cpath d='M10 140 Q15 110 20 140 M35 140 Q40 100 45 140 M60 140 Q65 85 70 140 M95 140 Q100 105 105 140 M125 140 Q130 80 135 140 M160 140 Q165 100 170 140 M200 140 Q205 90 210 140 M240 140 Q245 105 250 140 M280 140 Q285 80 290 140 M320 140 Q325 100 330 140 M360 140 Q365 85 370 140 M400 140 Q405 105 410 140 M440 140 Q445 80 450 140 M480 140 Q485 100 490 140 M520 140 Q525 85 530 140 M560 140 Q565 105 570 140 M600 140 Q605 80 610 140 M640 140 Q645 100 650 140 M680 140 Q685 85 690 140 M720 140 Q725 105 730 140 M760 140 Q765 80 770 140 M800 140 Q805 100 810 140 M840 140 Q845 85 850 140 M880 140 Q885 105 890 140 M920 140 Q925 80 930 140 M960 140 Q965 100 970 140 M1000 140 Q1005 85 1010 140 M1040 140 Q1045 105 1050 140 M1080 140 Q1085 80 1090 140 M1120 140 Q1125 100 1130 140 M1160 140 Q1165 85 1170 140 M1190 140 Q1195 100 1200 140'/%3E%3C/g%3E%3C!-- Herb sprigs with leaves --%3E%3Cg stroke='%232D4A3E' stroke-width='1.5' opacity='0.25'%3E%3Cpath d='M80 140 Q85 70 90 50'/%3E%3Cpath d='M85 90 Q75 85 70 78' /%3E%3Cpath d='M85 90 Q95 85 100 78' /%3E%3Cpath d='M87 70 Q77 65 72 58' /%3E%3Cpath d='M87 70 Q97 65 102 58' /%3E%3Cpath d='M350 140 Q355 60 365 40'/%3E%3Cpath d='M357 80 Q347 75 342 68' /%3E%3Cpath d='M357 80 Q367 75 372 68' /%3E%3Cpath d='M360 60 Q350 55 345 48' /%3E%3Cpath d='M360 60 Q370 55 375 48' /%3E%3Cpath d='M700 140 Q705 65 715 45'/%3E%3Cpath d='M707 85 Q697 80 692 73' /%3E%3Cpath d='M707 85 Q717 80 722 73' /%3E%3Cpath d='M710 65 Q700 60 695 53' /%3E%3Cpath d='M710 65 Q720 60 725 53' /%3E%3Cpath d='M1050 140 Q1055 70 1065 50'/%3E%3Cpath d='M1057 90 Q1047 85 1042 78' /%3E%3Cpath d='M1057 90 Q1067 85 1072 78' /%3E%3C/g%3E%3C!-- Golden wildflowers --%3E%3Cg opacity='0.35'%3E%3Ccircle cx='180' cy='55' r='4' fill='%23C8A951'/%3E%3Cpath d='M180 140 Q182 80 180 55' stroke='%234A7C5C' stroke-width='1.2' fill='none'/%3E%3Cpath d='M181 95 Q171 90 166 83' stroke='%234A7C5C' stroke-width='0.8' fill='none'/%3E%3Ccircle cx='500' cy='45' r='5' fill='%23D4A847'/%3E%3Cpath d='M500 140 Q502 75 500 45' stroke='%234A7C5C' stroke-width='1.2' fill='none'/%3E%3Cpath d='M501 80 Q511 75 516 68' stroke='%234A7C5C' stroke-width='0.8' fill='none'/%3E%3Ccircle cx='850' cy='50' r='4' fill='%23C8A951'/%3E%3Cpath d='M850 140 Q852 80 850 50' stroke='%234A7C5C' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='1150' cy='55' r='3.5' fill='%23E8C8A0'/%3E%3Cpath d='M1150 140 Q1152 85 1150 55' stroke='%234A7C5C' stroke-width='1' fill='none'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat-x;
     background-position: bottom;
     background-size: auto 100%;
     z-index: 0;
     pointer-events: none;
-    animation: sway 8s ease-in-out infinite alternate;
+    animation: sway 10s ease-in-out infinite alternate;
     transform-origin: bottom center;
 }
 
-/* Make sure panel content is above footer botanical */
+/* Panel content stays above footer */
 .panel-content {
     position: relative;
     z-index: 1;
 }
 
-/* Floral accents replacing abstract shapes */
-.shape-1 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+/* Decorative shapes — soft green organic glow */
+.shape {
+    position: absolute;
     border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: -100px;
+    filter: blur(100px);
     z-index: 0;
-    animation: sway 9s ease-in-out infinite alternate;
+    pointer-events: none;
 }
-.shape-1::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100 Q40 50 20 20 M50 100 Q60 50 80 20 M50 100 Q50 40 50 10' stroke='%2360A5FA' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3Ccircle cx='20' cy='20' r='5' fill='%23DBEAFE' opacity='0.5'/%3E%3Ccircle cx='80' cy='20' r='5' fill='%23DBEAFE' opacity='0.5'/%3E%3Ccircle cx='50' cy='10' r='6' fill='%23DBEAFE' opacity='0.5'/%3E%3C/svg%3E");
-    background-size: cover;
+
+.shape-1 {
+    width: 500px;
+    height: 500px;
+    top: -150px;
+    left: -200px;
+    background: linear-gradient(135deg, rgba(74, 124, 92, 0.12), rgba(200, 169, 81, 0.06));
+    opacity: 0.5;
 }
 
 .shape-2 {
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    z-index: 0;
-    animation: sway 7s ease-in-out infinite alternate-reverse;
+    width: 600px;
+    height: 600px;
+    bottom: -250px;
+    right: -150px;
+    background: linear-gradient(135deg, rgba(200, 169, 81, 0.1), rgba(45, 74, 62, 0.06));
+    opacity: 0.4;
 }
-.shape-2::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 100 Q30 60 10 40 M50 100 Q70 60 90 40' stroke='%234B5563' stroke-width='1.5' fill='none' opacity='0.25'/%3E%3Cpath d='M10 40 Q20 30 30 40 T10 40' fill='%239CA3AF' opacity='0.3'/%3E%3Cpath d='M90 40 Q80 30 70 40 T90 40' fill='%239CA3AF' opacity='0.3'/%3E%3C/svg%3E");
-    background-size: cover;
-}
+
