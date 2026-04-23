@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupOverlay = document.getElementById('popup-overlay');
     const popupClose = document.getElementById('popup-close');
     const popupContent = document.getElementById('popup-content');
+    
+    // Mobile menu elements
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+    const mobilePageTitle = document.getElementById('mobile-page-title');
 
     const PANEL_COUNT = 5;
     const CENTER_PANEL = 2; // Main page is panel index 2
@@ -15,19 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ═══════════════════════════════════════════
     // THEME TOGGLE (Dark/Light Mode)
     // ═══════════════════════════════════════════
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const sunIcon = themeToggleBtn.querySelector('.sun-icon');
-    const moonIcon = themeToggleBtn.querySelector('.moon-icon');
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle');
 
     function setTheme(themeName) {
         if (themeName === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
+            themeToggleBtns.forEach(btn => {
+                btn.querySelector('.sun-icon').style.display = 'none';
+                btn.querySelector('.moon-icon').style.display = 'block';
+            });
         } else {
             document.documentElement.removeAttribute('data-theme');
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
+            themeToggleBtns.forEach(btn => {
+                btn.querySelector('.sun-icon').style.display = 'block';
+                btn.querySelector('.moon-icon').style.display = 'none';
+            });
         }
         localStorage.setItem('santiago_theme', themeName);
     }
@@ -43,9 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTheme('light');
     }
 
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
     });
 
     // ═══════════════════════════════════════════
@@ -67,6 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = parseInt(btn.getAttribute('data-target'));
             btn.classList.toggle('active', target === index);
         });
+
+        // Update mobile nav buttons
+        mobileNavBtns.forEach(btn => {
+            const target = parseInt(btn.getAttribute('data-target'));
+            btn.classList.toggle('active', target === index);
+        });
+        
+        // Update mobile page title
+        updateMobileTitle();
 
         // Scroll panel content to top when navigating
         const panels = document.querySelectorAll('.panel-scroll');
@@ -98,6 +118,62 @@ document.addEventListener('DOMContentLoaded', () => {
             goToSlide(target);
         });
     });
+
+    // Mobile nav button clicks
+    mobileNavBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const target = parseInt(e.currentTarget.getAttribute('data-target'));
+            goToSlide(target);
+            closeMobileMenu();
+        });
+    });
+
+    // Mobile Header Hide on Scroll Down
+    const navbar = document.getElementById('navbar');
+    const panelScrolls = document.querySelectorAll('.panel-scroll');
+    
+    panelScrolls.forEach(panel => {
+        let lastScrollTop = 0;
+        panel.addEventListener('scroll', () => {
+            if (window.innerWidth > 768) return; // Only apply on mobile
+
+            let scrollTop = panel.scrollTop;
+            
+            // Allow some threshold to prevent jitter
+            if (Math.abs(scrollTop - lastScrollTop) <= 10) return;
+            
+            // At top of page, always show header
+            if (scrollTop <= 50) {
+                navbar.classList.remove('navbar-hidden');
+            } else if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('navbar-hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('navbar-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+    });
+
+    // Mobile Menu Toggle logic
+    if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('active');
+        });
+        
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) closeMobileMenu();
+        });
+    }
+    
+    function closeMobileMenu() {
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.remove('active');
+        }
+    }
 
     // In-page navigation buttons (like "Узнать больше о Микробиоме")
     navLinkBtns.forEach(btn => {
@@ -371,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaY = touchEndY - touchStartY;
 
         // Only handle horizontal swipes (ignore vertical scrolling)
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 60) {
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
             if (deltaX < 0 && currentSlide < PANEL_COUNT - 1) {
                 goToSlide(currentSlide + 1);
             } else if (deltaX > 0 && currentSlide > 0) {
@@ -565,11 +641,12 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[key] && translations[key][lang]) {
-                // If it's the hero title, keep it simple, or innerHTML if needed.
-                // Using innerHTML allows for bold tags etc., but textContent is safer.
                 el.innerHTML = translations[key][lang]; 
             }
         });
+
+        // Update mobile title if needed
+        updateMobileTitle();
 
         // 2. Swap PDF download links based on data-pdf attributes
         document.querySelectorAll('[data-pdf-ru][data-pdf-ua][data-pdf-cz][data-pdf-en]').forEach(link => {
@@ -595,6 +672,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Apply saved language on load
         setLanguage(currentLang);
+    }
+
+    // ═══════════════════════════════════════════
+    // MOBILE TITLE UPDATER
+    // ═══════════════════════════════════════════
+
+    function updateMobileTitle() {
+        if (!mobilePageTitle) return;
+        
+        // Find the active mobile nav button
+        const activeBtn = Array.from(mobileNavBtns).find(btn => btn.classList.contains('active'));
+        if (activeBtn) {
+            // Check if it has a translation key
+            const key = activeBtn.getAttribute('data-i18n');
+            if (key && translations[key] && translations[key][currentLang]) {
+                mobilePageTitle.innerHTML = translations[key][currentLang];
+            } else {
+                // Default to Santiago for center panel or if no translation
+                mobilePageTitle.innerHTML = "SANTIAGO";
+            }
+        }
     }
 
     // ═══════════════════════════════════════════
