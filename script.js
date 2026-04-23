@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = true;
         peekDirection = direction;
         peekBaseSlide = currentSlide;
-        // Smooth micro-transition for organic tracking
-        track.style.transition = 'transform 0.12s ease-out';
+        // Slow smooth transition for a floaty, organic feel
+        track.style.transition = 'transform 0.3s ease-out';
     }
 
     // Easing function for smoother feel — responsive start, gentle end
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = false;
 
         // Smooth snap back with a nice spring feel
-        track.style.transition = 'transform 1s cubic-bezier(0.22, 0.68, 0.35, 1)';
+        track.style.transition = 'transform 1.2s cubic-bezier(0.22, 0.68, 0.35, 1)';
         const baseOffset = -(peekBaseSlide * 100);
         track.style.transform = `translateX(${baseOffset}vw)`;
 
