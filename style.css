@@ -298,6 +298,7 @@ img {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background: transparent;
 }
 
 .slider-track {
@@ -315,6 +316,7 @@ img {
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
+    background: transparent;
 }
 
 .panel-scroll {
@@ -324,6 +326,7 @@ img {
     overflow-x: hidden;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    background: transparent;
 }
 
 /* Hide scrollbar completely */
