@@ -130,18 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
         sideNavRight.classList.toggle('hidden', currentSlide === PANEL_COUNT - 1);
     }
 
-    // Calculate where the panel-content edges are (the text zone)
+    // Calculate where the CURRENT panel's content edges are (the text zone)
     function getContentEdges() {
-        const panelContentEl = document.querySelector('.panel.panel-science .panel-content') ||
-                               document.querySelector('.panel-content');
+        const panels = document.querySelectorAll('.panel');
+        const currentPanel = panels[currentSlide];
+        const panelContentEl = currentPanel
+            ? currentPanel.querySelector('.panel-content')
+            : null;
+
         if (!panelContentEl) {
             // fallback: assume 900px centered
             const contentWidth = Math.min(900, window.innerWidth);
             const leftEdge = (window.innerWidth - contentWidth) / 2;
             return { left: leftEdge, right: leftEdge + contentWidth };
         }
-        const rect = panelContentEl.getBoundingClientRect();
-        return { left: rect.left, right: rect.right };
+
+        // panel-content is inside the slider-track which is translated,
+        // so getBoundingClientRect gives its on-screen position.
+        // But during peek the track moves, so we compute from the panel-content's
+        // own width & centering, which is constant regardless of track offset.
+        const contentWidth = panelContentEl.offsetWidth;
+        const leftEdge = (window.innerWidth - contentWidth) / 2;
+        return { left: leftEdge, right: leftEdge + contentWidth };
     }
 
     // Global mousemove handler for proportional peeking
