@@ -394,15 +394,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = Date.now();
         
         // Reset state if it's been a while (new swipe entirely)
-        if (now - lastWheelTime > 200) {
+        if (now - lastWheelTime > 250) {
             wheelAccumulator = 0;
             wheelCooldown = false;
         }
         
         // Velocity spike detection: Trackpad inertia decays over time.
-        // If we see a sudden jump in deltaX, it means the user physically swiped AGAIN.
-        // This instantly unlocks the cooldown to allow rapid consecutive swipes.
-        if (Math.abs(e.deltaX) > Math.abs(lastDeltaX) + 10) {
+        // If we see a sudden STRONG jump in deltaX (>30), it means a new physical swipe.
+        // We require deltaX > 30 to avoid false positives from uneven inertia deceleration.
+        if (Math.abs(e.deltaX) > 30 && Math.abs(e.deltaX) > Math.abs(lastDeltaX) + 15) {
             wheelCooldown = false; 
             wheelAccumulator = 0;
         }
@@ -423,13 +423,13 @@ document.addEventListener('DOMContentLoaded', () => {
         wheelAccumulator += e.deltaX;
 
         // The total accumulated distance required to trigger a slide switch
-        const SWIPE_THRESHOLD = 50; 
+        const SWIPE_THRESHOLD = 70; // Increased slightly to prevent accidental triggers
 
         if (wheelAccumulator > SWIPE_THRESHOLD && currentSlide < PANEL_COUNT - 1) {
             wheelCooldown = true;
             wheelAccumulator = 0;
             goToSlide(currentSlide + 1);
-            // 800ms cooldown blocks inertia, but velocity spike (above) breaks this instantly
+            // 800ms cooldown blocks inertia, but strong velocity spike (above) breaks this instantly
             setTimeout(() => wheelCooldown = false, 800);
         } else if (wheelAccumulator < -SWIPE_THRESHOLD && currentSlide > 0) {
             wheelCooldown = true;
