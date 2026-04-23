@@ -455,6 +455,12 @@ img {
     border-left: 4px solid var(--color-primary);
 }
 
+[data-theme="dark"] .positive-text {
+    color: var(--color-text);
+    background: rgba(200, 169, 81, 0.05);
+    border-left-color: var(--color-accent);
+}
+
 /* Info Box */
 .info-box {
     background: var(--color-card);
@@ -521,7 +527,11 @@ img {
 .info-card p {
     font-size: 0.95rem;
     margin-bottom: 0;
-    color: #3A3328; /* Force dark text because backgrounds are light */
+}
+
+.info-card.good p,
+.info-card.bad p {
+    color: #3A3328 !important; /* Force dark text explicitly */
 }
 
 .info-card.good {
