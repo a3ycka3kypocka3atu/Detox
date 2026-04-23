@@ -67,6 +67,23 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   DARK THEME (Midnight Jungle)
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+    --color-background: #0B130E;
+    --color-foreground: #E6DFD3;
+    --color-muted: #142118;
+    --color-border: #1F3628;
+    --color-text: #D1C9B8;
+    --color-text-light: #8A9E8F;
+    --color-card: #111D15;
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESET & BASE
    ═══════════════════════════════════════════════════════════════ */
 
@@ -245,6 +262,27 @@ img {
     color: var(--color-herb-deep);
     border-color: var(--color-accent);
     font-weight: 600;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-left: var(--space-sm);
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    transform: scale(1.05);
 }
 
 /* ═══════════════════════════════════════════════════════════════

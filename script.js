@@ -13,6 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = CENTER_PANEL;
 
     // ═══════════════════════════════════════════
+    // THEME TOGGLE (Dark/Light Mode)
+    // ═══════════════════════════════════════════
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = themeToggleBtn.querySelector('.sun-icon');
+    const moonIcon = themeToggleBtn.querySelector('.moon-icon');
+
+    function setTheme(themeName) {
+        if (themeName === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        }
+        localStorage.setItem('santiago_theme', themeName);
+    }
+
+    // Initialize Theme
+    const savedTheme = localStorage.getItem('santiago_theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // ═══════════════════════════════════════════
     // SLIDER NAVIGATION
     // ═══════════════════════════════════════════
 
