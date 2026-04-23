@@ -1586,29 +1586,34 @@ body {
     transition: opacity 0.5s ease, background 0.5s ease;
 }
 
+/* Light up the whole active zone with a transparent glass effect */
 .side-nav-zone.peek-active {
     opacity: 1;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
-/* Warm golden glow from the side when mouse enters */
+/* Subtle inner shadow to define the edges */
 .side-nav-zone--left.peek-active {
-    background: radial-gradient(ellipse at 0% 50%, rgba(200, 169, 81, 0.25) 0%, rgba(74, 124, 92, 0.10) 35%, transparent 65%);
-    box-shadow: inset 30px 0 60px -20px rgba(200, 169, 81, 0.15);
+    box-shadow: inset 10px 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .side-nav-zone--right.peek-active {
-    background: radial-gradient(ellipse at 100% 50%, rgba(200, 169, 81, 0.25) 0%, rgba(74, 124, 92, 0.10) 35%, transparent 65%);
-    box-shadow: inset -30px 0 60px -20px rgba(200, 169, 81, 0.15);
+    box-shadow: inset -10px 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme active zone */
+[data-theme="dark"] .side-nav-zone.peek-active {
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .side-nav-zone--left.peek-active {
-    background: radial-gradient(ellipse at 0% 50%, rgba(200, 169, 81, 0.15) 0%, rgba(255, 255, 255, 0.04) 35%, transparent 65%);
-    box-shadow: inset 30px 0 60px -20px rgba(200, 169, 81, 0.10);
+    box-shadow: inset 10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .side-nav-zone--right.peek-active {
-    background: radial-gradient(ellipse at 100% 50%, rgba(200, 169, 81, 0.15) 0%, rgba(255, 255, 255, 0.04) 35%, transparent 65%);
-    box-shadow: inset -30px 0 60px -20px rgba(200, 169, 81, 0.10);
+    box-shadow: inset -10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .side-nav-zone:hover {
