@@ -382,6 +382,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // ═══════════════════════════════════════════
+    // TRACKPAD HORIZONTAL SWIPE SUPPORT (Mac/Laptops)
+    // ═══════════════════════════════════════════
+
+    let wheelCooldown = false;
+
+    document.addEventListener('wheel', (e) => {
+        if (isTransitioning || wheelCooldown) return;
+        
+        // Ignore if scrolling mostly vertically (e.g. reading content)
+        if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return; 
+        
+        // Threshold to avoid accidental tiny swipes
+        if (Math.abs(e.deltaX) < 40) return; 
+
+        if (e.deltaX > 0 && currentSlide < PANEL_COUNT - 1) {
+            // Swiped left (to go right)
+            wheelCooldown = true;
+            goToSlide(currentSlide + 1);
+            setTimeout(() => wheelCooldown = false, 1500);
+        } else if (e.deltaX < 0 && currentSlide > 0) {
+            // Swiped right (to go left)
+            wheelCooldown = true;
+            goToSlide(currentSlide - 1);
+            setTimeout(() => wheelCooldown = false, 1500);
+        }
+    }, { passive: true });
+
+    // ═══════════════════════════════════════════
     // KEYBOARD NAVIGATION
     // ═══════════════════════════════════════════
 
