@@ -385,27 +385,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // TRACKPAD HORIZONTAL SWIPE SUPPORT (Mac/Laptops)
     // ═══════════════════════════════════════════
 
+    let wheelAccumulator = 0;
     let wheelCooldown = false;
+    let lastWheelTime = 0;
 
     document.addEventListener('wheel', (e) => {
         if (isTransitioning || wheelCooldown) return;
         
-        // Ignore if scrolling mostly vertically (e.g. reading content)
-        if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return; 
+        const now = Date.now();
+        // Reset accumulator if it's been more than 300ms since last wheel event
+        if (now - lastWheelTime > 300) {
+            wheelAccumulator = 0;
+        }
+        lastWheelTime = now;
         
-        // Threshold to avoid accidental tiny swipes
-        if (Math.abs(e.deltaX) < 40) return; 
+        // Ignore if scrolling mostly vertically (e.g., reading text)
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            wheelAccumulator = 0;
+            return; 
+        }
+        
+        // Accumulate horizontal scroll distance
+        wheelAccumulator += e.deltaX;
 
-        if (e.deltaX > 0 && currentSlide < PANEL_COUNT - 1) {
-            // Swiped left (to go right)
+        // The total accumulated distance required to trigger a slide switch
+        const SWIPE_THRESHOLD = 50; 
+
+        if (wheelAccumulator > SWIPE_THRESHOLD && currentSlide < PANEL_COUNT - 1) {
             wheelCooldown = true;
+            wheelAccumulator = 0;
             goToSlide(currentSlide + 1);
-            setTimeout(() => wheelCooldown = false, 1500);
-        } else if (e.deltaX < 0 && currentSlide > 0) {
-            // Swiped right (to go left)
+            setTimeout(() => wheelCooldown = false, 1200);
+        } else if (wheelAccumulator < -SWIPE_THRESHOLD && currentSlide > 0) {
             wheelCooldown = true;
+            wheelAccumulator = 0;
             goToSlide(currentSlide - 1);
-            setTimeout(() => wheelCooldown = false, 1500);
+            setTimeout(() => wheelCooldown = false, 1200);
         }
     }, { passive: true });
 
