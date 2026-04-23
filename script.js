@@ -130,10 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavLeftTimer = setTimeout(() => {
                     sideNavLeft.classList.remove('hover-active');
                     goToSlide(currentSlide - 1);
-                    // Small delay before checking hover and restarting
+                    // Wait for the 1.2s slide transition to finish before starting the next timer
                     setTimeout(() => {
                         if (sideNavLeft.matches(':hover')) startTimer('left');
-                    }, 50);
+                    }, 1250); // 1.2s transition + 50ms buffer
                 }, 1200);
             }
         } else {
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavRightTimer = setTimeout(() => {
                     sideNavRight.classList.remove('hover-active');
                     goToSlide(currentSlide + 1);
-                    // Small delay before checking hover and restarting
+                    // Wait for the 1.2s slide transition to finish before starting the next timer
                     setTimeout(() => {
                         if (sideNavRight.matches(':hover')) startTimer('right');
-                    }, 50);
+                    }, 1250); // 1.2s transition + 50ms buffer
                 }, 1200);
             }
         }
