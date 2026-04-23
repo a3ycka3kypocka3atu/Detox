@@ -123,16 +123,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let sideNavLeftTimer;
     let sideNavRightTimer;
 
-    if (sideNavLeft) {
-        sideNavLeft.addEventListener('mouseenter', () => {
+    function startTimer(direction) {
+        if (direction === 'left') {
             if (currentSlide > 0) {
                 sideNavLeft.classList.add('hover-active');
                 sideNavLeftTimer = setTimeout(() => {
                     sideNavLeft.classList.remove('hover-active');
                     goToSlide(currentSlide - 1);
-                }, 2000);
+                    // Force a tiny reflow to reset animation
+                    void sideNavLeft.offsetWidth; 
+                    // Continue swiping if still hovering
+                    if (sideNavLeft.matches(':hover')) startTimer('left');
+                }, 1200);
             }
-        });
+        } else {
+            if (currentSlide < PANEL_COUNT - 1) {
+                sideNavRight.classList.add('hover-active');
+                sideNavRightTimer = setTimeout(() => {
+                    sideNavRight.classList.remove('hover-active');
+                    goToSlide(currentSlide + 1);
+                    // Force a tiny reflow to reset animation
+                    void sideNavRight.offsetWidth;
+                    // Continue swiping if still hovering
+                    if (sideNavRight.matches(':hover')) startTimer('right');
+                }, 1200);
+            }
+        }
+    }
+
+    if (sideNavLeft) {
+        sideNavLeft.addEventListener('mouseenter', () => startTimer('left'));
         sideNavLeft.addEventListener('mouseleave', () => {
             sideNavLeft.classList.remove('hover-active');
             clearTimeout(sideNavLeftTimer);
@@ -147,15 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sideNavRight) {
-        sideNavRight.addEventListener('mouseenter', () => {
-            if (currentSlide < PANEL_COUNT - 1) {
-                sideNavRight.classList.add('hover-active');
-                sideNavRightTimer = setTimeout(() => {
-                    sideNavRight.classList.remove('hover-active');
-                    goToSlide(currentSlide + 1);
-                }, 2000);
-            }
-        });
+        sideNavRight.addEventListener('mouseenter', () => startTimer('right'));
         sideNavRight.addEventListener('mouseleave', () => {
             sideNavRight.classList.remove('hover-active');
             clearTimeout(sideNavRightTimer);

@@ -1525,7 +1525,7 @@ body {
 
 .side-nav-zone.hover-active::before {
     height: 100%;
-    transition: height 2s linear; /* 2 second timer animation */
+    transition: height 1.2s linear; /* 1.2 second timer animation */
 }
 
 .side-nav-zone:hover {
