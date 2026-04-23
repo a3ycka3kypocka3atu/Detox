@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Max peek: just a subtle hint, not a full panel shift
-    const MAX_PEEK_VW = 12;
+    const MAX_PEEK_VW = 4;
 
     function applyPeekOffset(progress, direction) {
         // Current slide base position
