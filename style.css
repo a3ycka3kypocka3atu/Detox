@@ -525,7 +525,8 @@ img {
 
 .info-card.good {
     background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
-    border: 1px solid rgba(45, 74, 62, 0.15);
+    border: 1px solid rgba(45, 74, 62, 0.20);
+    box-shadow: 0 2px 12px rgba(45, 74, 62, 0.08);
 }
 
 .info-card.good h3 {
@@ -534,7 +535,8 @@ img {
 
 .info-card.bad {
     background: linear-gradient(135deg, #FFF3E0, #FFF8E1);
-    border: 1px solid rgba(200, 169, 81, 0.25);
+    border: 1px solid rgba(200, 169, 81, 0.30);
+    box-shadow: 0 2px 12px rgba(200, 169, 81, 0.08);
 }
 
 .info-card.bad h3 {
