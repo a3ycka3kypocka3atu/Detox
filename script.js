@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isTransitioning = true;
 
         // Re-enable smooth transition for the final snap
-        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transition = 'transform 1.4s cubic-bezier(0.22, 0.68, 0.35, 1)';
 
         if (direction === 'left' && currentSlide > 0) {
             goToSlide(currentSlide - 1);
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransitioning = false;
             // Restore the default slide transition
             track.style.transition = 'var(--transition-slide)';
-        }, 650);
+        }, 1500);
     }
 
     function cancelPeek() {
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = false;
 
         // Smooth snap back with a nice spring feel
-        track.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        track.style.transition = 'transform 1s cubic-bezier(0.22, 0.68, 0.35, 1)';
         const baseOffset = -(peekBaseSlide * 100);
         track.style.transform = `translateX(${baseOffset}vw)`;
 
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Restore default transition after snap-back
         setTimeout(() => {
             track.style.transition = 'var(--transition-slide)';
-        }, 550);
+        }, 1050);
     }
 
     // Attach global mousemove — only active on desktop (not mobile)
@@ -327,23 +327,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mouseX < edges.left && currentSlide > 0) {
             if (isPeeking) cancelPeek();
             isTransitioning = true;
-            track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+            track.style.transition = 'transform 1.6s cubic-bezier(0.22, 0.68, 0.35, 1)';
             goToSlide(currentSlide - 1);
             setTimeout(() => {
                 isTransitioning = false;
                 track.style.transition = 'var(--transition-slide)';
-            }, 850);
+            }, 1700);
         }
         // Click in right zone
         else if (mouseX > edges.right && currentSlide < PANEL_COUNT - 1) {
             if (isPeeking) cancelPeek();
             isTransitioning = true;
-            track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+            track.style.transition = 'transform 1.6s cubic-bezier(0.22, 0.68, 0.35, 1)';
             goToSlide(currentSlide + 1);
             setTimeout(() => {
                 isTransitioning = false;
                 track.style.transition = 'var(--transition-slide)';
-            }, 850);
+            }, 1700);
         }
     });
 
