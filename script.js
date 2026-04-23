@@ -130,10 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavLeftTimer = setTimeout(() => {
                     sideNavLeft.classList.remove('hover-active');
                     goToSlide(currentSlide - 1);
-                    // Force a tiny reflow to reset animation
-                    void sideNavLeft.offsetWidth; 
-                    // Continue swiping if still hovering
-                    if (sideNavLeft.matches(':hover')) startTimer('left');
+                    // Small delay before checking hover and restarting
+                    setTimeout(() => {
+                        if (sideNavLeft.matches(':hover')) startTimer('left');
+                    }, 50);
                 }, 1200);
             }
         } else {
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavRightTimer = setTimeout(() => {
                     sideNavRight.classList.remove('hover-active');
                     goToSlide(currentSlide + 1);
-                    // Force a tiny reflow to reset animation
-                    void sideNavRight.offsetWidth;
-                    // Continue swiping if still hovering
-                    if (sideNavRight.matches(':hover')) startTimer('right');
+                    // Small delay before checking hover and restarting
+                    setTimeout(() => {
+                        if (sideNavRight.matches(':hover')) startTimer('right');
+                    }, 50);
                 }, 1200);
             }
         }
