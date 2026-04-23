@@ -223,15 +223,22 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = true;
         peekDirection = direction;
         peekBaseSlide = currentSlide;
-        // Disable CSS transition for instant tracking
-        track.style.transition = 'none';
+        // Use a short smooth transition for buttery tracking instead of none
+        track.style.transition = 'transform 0.08s ease-out';
+    }
+
+    // Easing function for smoother feel — responsive start, gentle end
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
     }
 
     function applyPeekOffset(progress, direction) {
         // Current slide base position
         const baseOffset = -(peekBaseSlide * 100); // in vw
+        // Apply easing curve for smoother feel
+        const easedProgress = easeOutCubic(progress);
         // Maximum peek is one full panel width (100vw)
-        const peekAmount = progress * 100; // in vw
+        const peekAmount = easedProgress * 100; // in vw
 
         let finalOffset;
         if (direction === 'left') {
@@ -247,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isTransitioning = true;
 
         // Re-enable smooth transition for the final snap
-        track.style.transition = 'var(--transition-slide)';
+        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
 
         if (direction === 'left' && currentSlide > 0) {
             goToSlide(currentSlide - 1);
@@ -263,15 +270,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unlock after transition finishes
         setTimeout(() => {
             isTransitioning = false;
-        }, 1300);
+            // Restore the default slide transition
+            track.style.transition = 'var(--transition-slide)';
+        }, 650);
     }
 
     function cancelPeek() {
         if (!isPeeking) return;
         isPeeking = false;
 
-        // Re-enable smooth transition to snap back
-        track.style.transition = 'var(--transition-slide)';
+        // Smooth snap back with a nice spring feel
+        track.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
         const baseOffset = -(peekBaseSlide * 100);
         track.style.transform = `translateX(${baseOffset}vw)`;
 
@@ -279,6 +288,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sideNavRight) sideNavRight.classList.remove('peek-active');
         peekDirection = null;
         peekBaseSlide = null;
+
+        // Restore default transition after snap-back
+        setTimeout(() => {
+            track.style.transition = 'var(--transition-slide)';
+        }, 550);
     }
 
     // Attach global mousemove — only active on desktop (not mobile)
@@ -291,26 +305,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Click on side zones still works for instant navigation
-    if (sideNavLeft) {
-        sideNavLeft.addEventListener('click', () => {
-            if (currentSlide > 0 && !isTransitioning) {
-                cancelPeek();
-                track.style.transition = 'var(--transition-slide)';
-                goToSlide(currentSlide - 1);
-            }
-        });
-    }
+    // Click ANYWHERE in the active zone (outside text) to instantly switch slides
+    document.addEventListener('click', (e) => {
+        if (isTransitioning) return;
 
-    if (sideNavRight) {
-        sideNavRight.addEventListener('click', () => {
-            if (currentSlide < PANEL_COUNT - 1 && !isTransitioning) {
-                cancelPeek();
+        // Ignore clicks on interactive elements (buttons, links, inputs, etc.)
+        const tag = e.target.tagName;
+        if (tag === 'BUTTON' || tag === 'A' || tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+        if (e.target.closest('button, a, .popup-overlay, .navbar, .mobile-dots')) return;
+
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const navbarHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 72;
+
+        // Ignore clicks in navbar
+        if (mouseY < navbarHeight) return;
+
+        const edges = getContentEdges();
+
+        // Click in left zone
+        if (mouseX < edges.left && currentSlide > 0) {
+            if (isPeeking) cancelPeek();
+            isTransitioning = true;
+            track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+            goToSlide(currentSlide - 1);
+            setTimeout(() => {
+                isTransitioning = false;
                 track.style.transition = 'var(--transition-slide)';
-                goToSlide(currentSlide + 1);
-            }
-        });
-    }
+            }, 850);
+        }
+        // Click in right zone
+        else if (mouseX > edges.right && currentSlide < PANEL_COUNT - 1) {
+            if (isPeeking) cancelPeek();
+            isTransitioning = true;
+            track.style.transition = 'transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+            goToSlide(currentSlide + 1);
+            setTimeout(() => {
+                isTransitioning = false;
+                track.style.transition = 'var(--transition-slide)';
+            }, 850);
+        }
+    });
 
     // ═══════════════════════════════════════════
     // TOUCH / SWIPE SUPPORT
