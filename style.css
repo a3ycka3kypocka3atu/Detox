@@ -1514,7 +1514,7 @@ body {
     background: rgba(11, 19, 14, 0.85); /* Dark translucent background */
 }
 
-/* Side navigation zones — dynamic areas outside text content, proportional slide peeking */
+/* Side navigation zones — dynamic areas outside text content, subtle peek hint */
 .side-nav-zone {
     position: fixed;
     top: var(--navbar-height);
@@ -1528,47 +1528,53 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none; /* Clicks handled by global mousemove, but keep click listener */
+    transition: opacity 0.4s ease, background 0.4s ease;
 }
-
-/* Re-enable pointer events so clicks still work */
-.side-nav-zone { pointer-events: auto; }
 
 .side-nav-zone.peek-active {
     opacity: 1;
-    background-color: rgba(45, 74, 62, 0.06);
 }
 
-[data-theme="dark"] .side-nav-zone.peek-active {
-    background-color: rgba(255, 255, 255, 0.04);
+/* Soft glow from the side when hovering */
+.side-nav-zone--left.peek-active {
+    background: radial-gradient(ellipse at left center, rgba(200, 169, 81, 0.12) 0%, rgba(45, 74, 62, 0.06) 40%, transparent 70%);
+}
+
+.side-nav-zone--right.peek-active {
+    background: radial-gradient(ellipse at right center, rgba(200, 169, 81, 0.12) 0%, rgba(45, 74, 62, 0.06) 40%, transparent 70%);
+}
+
+[data-theme="dark"] .side-nav-zone--left.peek-active {
+    background: radial-gradient(ellipse at left center, rgba(200, 169, 81, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 70%);
+}
+
+[data-theme="dark"] .side-nav-zone--right.peek-active {
+    background: radial-gradient(ellipse at right center, rgba(200, 169, 81, 0.08) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 70%);
 }
 
 .side-nav-zone:hover {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .side-nav-zone--left {
     left: 0;
-    border-right: 1px dashed rgba(45, 74, 62, 0.15);
 }
 
 .side-nav-zone--right {
     right: 0;
-    border-left: 1px dashed rgba(45, 74, 62, 0.15);
 }
 
 .side-nav-zone svg {
-    color: var(--color-primary);
-    opacity: 0.5;
-    filter: drop-shadow(0 0 4px rgba(45, 74, 62, 0.3));
-    transition: var(--transition-fast);
+    color: var(--color-accent);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 6px rgba(200, 169, 81, 0.3));
+    transition: all 0.4s ease;
 }
 
 .side-nav-zone.peek-active svg {
     opacity: 1;
-    filter: drop-shadow(0 0 12px rgba(45, 74, 62, 0.6));
-    transform: scale(1.3);
+    filter: drop-shadow(0 0 16px rgba(200, 169, 81, 0.5));
+    transform: scale(1.2);
 }
 
 .side-nav-zone.hidden {

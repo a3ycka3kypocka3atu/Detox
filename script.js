@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return { left: leftEdge, right: leftEdge + contentWidth };
     }
 
-    // Global mousemove handler for proportional peeking
+    // Global mousemove handler for proportional peeking (hint only, no auto-switch)
     function handleMouseMove(e) {
         if (isTransitioning) return;
         const mouseX = e.clientX;
@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const edges = getContentEdges();
         const screenW = window.innerWidth;
-        const EDGE_COMMIT_PX = 5; // How close to screen edge to commit
 
         // LEFT ZONE: mouse is to the left of text content
         if (mouseX < edges.left && currentSlide > 0) {
@@ -182,14 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             applyPeekOffset(progress, 'left');
 
-            // Show the arrow
+            // Show the arrow + glow
             if (sideNavLeft) sideNavLeft.classList.add('peek-active');
             if (sideNavRight) sideNavRight.classList.remove('peek-active');
-
-            // Commit if reached the edge
-            if (mouseX <= EDGE_COMMIT_PX) {
-                commitPeek('left');
-            }
         }
         // RIGHT ZONE: mouse is to the right of text content
         else if (mouseX > edges.right && currentSlide < PANEL_COUNT - 1) {
@@ -202,14 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             applyPeekOffset(progress, 'right');
 
-            // Show the arrow
+            // Show the arrow + glow
             if (sideNavRight) sideNavRight.classList.add('peek-active');
             if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
-
-            // Commit if reached the edge
-            if (mouseX >= screenW - EDGE_COMMIT_PX) {
-                commitPeek('right');
-            }
         }
         // Mouse is back in the text content area
         else {
@@ -223,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = true;
         peekDirection = direction;
         peekBaseSlide = currentSlide;
-        // Use a short smooth transition for buttery tracking instead of none
-        track.style.transition = 'transform 0.08s ease-out';
+        // Smooth micro-transition for organic tracking
+        track.style.transition = 'transform 0.12s ease-out';
     }
 
     // Easing function for smoother feel — responsive start, gentle end
@@ -232,47 +221,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return 1 - Math.pow(1 - t, 3);
     }
 
+    // Max peek: just a subtle hint, not a full panel shift
+    const MAX_PEEK_VW = 12;
+
     function applyPeekOffset(progress, direction) {
         // Current slide base position
         const baseOffset = -(peekBaseSlide * 100); // in vw
         // Apply easing curve for smoother feel
         const easedProgress = easeOutCubic(progress);
-        // Maximum peek is one full panel width (100vw)
-        const peekAmount = easedProgress * 100; // in vw
+        // Cap peek to a small hint
+        const peekAmount = easedProgress * MAX_PEEK_VW; // in vw
 
         let finalOffset;
         if (direction === 'left') {
-            finalOffset = baseOffset + peekAmount; // slide right to reveal left panel
+            finalOffset = baseOffset + peekAmount;
         } else {
-            finalOffset = baseOffset - peekAmount; // slide left to reveal right panel
+            finalOffset = baseOffset - peekAmount;
         }
         track.style.transform = `translateX(${finalOffset}vw)`;
-    }
-
-    function commitPeek(direction) {
-        isPeeking = false;
-        isTransitioning = true;
-
-        // Re-enable smooth transition for the final snap
-        track.style.transition = 'transform 1.4s cubic-bezier(0.22, 0.68, 0.35, 1)';
-
-        if (direction === 'left' && currentSlide > 0) {
-            goToSlide(currentSlide - 1);
-        } else if (direction === 'right' && currentSlide < PANEL_COUNT - 1) {
-            goToSlide(currentSlide + 1);
-        }
-
-        if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
-        if (sideNavRight) sideNavRight.classList.remove('peek-active');
-        peekDirection = null;
-        peekBaseSlide = null;
-
-        // Unlock after transition finishes
-        setTimeout(() => {
-            isTransitioning = false;
-            // Restore the default slide transition
-            track.style.transition = 'var(--transition-slide)';
-        }, 1500);
     }
 
     function cancelPeek() {
