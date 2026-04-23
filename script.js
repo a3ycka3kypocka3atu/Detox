@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sideNavLeft) {
-        sideNavLeft.addEventListener('click', () => {
+        sideNavLeft.addEventListener('mouseenter', () => {
             if (currentSlide > 0) goToSlide(currentSlide - 1);
         });
     }
 
     if (sideNavRight) {
-        sideNavRight.addEventListener('click', () => {
+        sideNavRight.addEventListener('mouseenter', () => {
             if (currentSlide < PANEL_COUNT - 1) goToSlide(currentSlide + 1);
         });
     }

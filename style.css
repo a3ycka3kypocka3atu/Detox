@@ -1459,17 +1459,17 @@ body {
     border-radius: var(--radius-lg);
 }
 
-/* Side navigation zones — always subtly visible, right next to text */
+/* Side navigation zones — wide areas outside text, swipe on hover */
 .side-nav-zone {
     position: fixed;
     top: var(--navbar-height);
-    width: 60px;
+    /* Width covers from edge to near the text column */
+    width: calc(50vw - 420px); 
     height: calc(100vh - var(--navbar-height));
     z-index: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
     opacity: 0.4;
     transition: opacity 0.3s ease;
 }
@@ -1479,13 +1479,17 @@ body {
 }
 
 .side-nav-zone--left {
-    left: calc(50% - 500px);
-    background: linear-gradient(to right, rgba(45, 74, 62, 0.06), transparent);
+    left: 0;
+    justify-content: flex-end;
+    padding-right: 20px;
+    background: linear-gradient(to right, transparent, rgba(45, 74, 62, 0.08));
 }
 
 .side-nav-zone--right {
-    right: calc(50% - 500px);
-    background: linear-gradient(to left, rgba(45, 74, 62, 0.06), transparent);
+    right: 0;
+    justify-content: flex-start;
+    padding-left: 20px;
+    background: linear-gradient(to left, transparent, rgba(45, 74, 62, 0.08));
 }
 
 .side-nav-zone svg {
