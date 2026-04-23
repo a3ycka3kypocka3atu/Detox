@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavLeftTimer = setTimeout(() => {
                     sideNavLeft.classList.remove('hover-active');
                     goToSlide(currentSlide - 1);
-                }, 3000);
+                }, 2000);
             }
         });
         sideNavLeft.addEventListener('mouseleave', () => {
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sideNavRightTimer = setTimeout(() => {
                     sideNavRight.classList.remove('hover-active');
                     goToSlide(currentSlide + 1);
-                }, 3000);
+                }, 2000);
             }
         });
         sideNavRight.addEventListener('mouseleave', () => {
