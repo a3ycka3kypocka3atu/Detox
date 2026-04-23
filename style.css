@@ -521,6 +521,7 @@ img {
 .info-card p {
     font-size: 0.95rem;
     margin-bottom: 0;
+    color: #3A3328; /* Force dark text because backgrounds are light */
 }
 
 .info-card.good {
