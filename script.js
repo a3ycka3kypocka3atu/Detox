@@ -388,17 +388,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let wheelAccumulator = 0;
     let wheelCooldown = false;
     let lastWheelTime = 0;
+    let lastDeltaX = 0;
 
     document.addEventListener('wheel', (e) => {
-        // Removed isTransitioning block so you can swipe again while it's still moving
-        if (wheelCooldown) return;
-        
         const now = Date.now();
-        // Reset accumulator if it's been more than 300ms since last wheel event
-        if (now - lastWheelTime > 300) {
+        
+        // Reset state if it's been a while (new swipe entirely)
+        if (now - lastWheelTime > 200) {
+            wheelAccumulator = 0;
+            wheelCooldown = false;
+        }
+        
+        // Velocity spike detection: Trackpad inertia decays over time.
+        // If we see a sudden jump in deltaX, it means the user physically swiped AGAIN.
+        // This instantly unlocks the cooldown to allow rapid consecutive swipes.
+        if (Math.abs(e.deltaX) > Math.abs(lastDeltaX) + 10) {
+            wheelCooldown = false; 
             wheelAccumulator = 0;
         }
+        
         lastWheelTime = now;
+        lastDeltaX = e.deltaX;
+
+        // If we are currently locked by inertia cooldown, ignore
+        if (wheelCooldown) return;
         
         // Ignore if scrolling mostly vertically (e.g., reading text)
         if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
@@ -416,14 +429,13 @@ document.addEventListener('DOMContentLoaded', () => {
             wheelCooldown = true;
             wheelAccumulator = 0;
             goToSlide(currentSlide + 1);
-            // Reduced cooldown so you can chain swipes rapidly
-            setTimeout(() => wheelCooldown = false, 500);
+            // 800ms cooldown blocks inertia, but velocity spike (above) breaks this instantly
+            setTimeout(() => wheelCooldown = false, 800);
         } else if (wheelAccumulator < -SWIPE_THRESHOLD && currentSlide > 0) {
             wheelCooldown = true;
             wheelAccumulator = 0;
             goToSlide(currentSlide - 1);
-            // Reduced cooldown so you can chain swipes rapidly
-            setTimeout(() => wheelCooldown = false, 500);
+            setTimeout(() => wheelCooldown = false, 800);
         }
     }, { passive: true });
 
