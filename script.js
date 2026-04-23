@@ -230,40 +230,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ═══════════════════════════════════════════
-    // LANGUAGE SWITCHER (RU ↔ UA)
+    // LANGUAGE SWITCHER (4-Language i18n)
     // ═══════════════════════════════════════════
 
-    const langToggle = document.getElementById('lang-toggle');
+    const langBtns = document.querySelectorAll('.lang-btn');
     let currentLang = localStorage.getItem('santiago-lang') || 'ru';
 
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('santiago-lang', lang);
 
-        // Update flag
-        const flag = langToggle.querySelector('.lang-flag');
-        flag.textContent = lang === 'ru' ? '🇺🇦' : '🇷🇺'; // Show the OTHER flag (click to switch to)
-        langToggle.title = lang === 'ru' ? 'Змінити мову на українську' : 'Переключить язык на русский';
-
-        // Swap all text with data-lang attributes
-        document.querySelectorAll('[data-lang-ru][data-lang-ua]').forEach(el => {
-            el.textContent = el.getAttribute(`data-lang-${lang}`);
+        // Update active class on buttons
+        langBtns.forEach(btn => {
+            if (btn.dataset.lang === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
         });
 
-        // Swap PDF download links
-        document.querySelectorAll('[data-pdf-ru][data-pdf-ua]').forEach(link => {
+        // 1. Swap all text using translations dictionary
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                // If it's the hero title, keep it simple, or innerHTML if needed.
+                // Using innerHTML allows for bold tags etc., but textContent is safer.
+                el.innerHTML = translations[lang][key]; 
+            }
+        });
+
+        // 2. Swap PDF download links based on data-pdf attributes
+        document.querySelectorAll('[data-pdf-ru][data-pdf-ua][data-pdf-cz][data-pdf-en]').forEach(link => {
             link.href = link.getAttribute(`data-pdf-${lang}`);
         });
 
-        // Update html lang attribute
-        document.documentElement.lang = lang === 'ua' ? 'uk' : 'ru';
+        // 3. Update HTML lang attribute
+        const htmlLangs = {
+            'ru': 'ru',
+            'ua': 'uk',
+            'cz': 'cs',
+            'en': 'en'
+        };
+        document.documentElement.lang = htmlLangs[lang] || 'ru';
     }
 
-    if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            setLanguage(currentLang === 'ru' ? 'ua' : 'ru');
+    if (langBtns.length > 0) {
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
         });
-
+        
         // Apply saved language on load
         setLanguage(currentLang);
     }
