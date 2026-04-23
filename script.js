@@ -390,7 +390,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastWheelTime = 0;
 
     document.addEventListener('wheel', (e) => {
-        if (isTransitioning || wheelCooldown) return;
+        // Removed isTransitioning block so you can swipe again while it's still moving
+        if (wheelCooldown) return;
         
         const now = Date.now();
         // Reset accumulator if it's been more than 300ms since last wheel event
@@ -415,12 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
             wheelCooldown = true;
             wheelAccumulator = 0;
             goToSlide(currentSlide + 1);
-            setTimeout(() => wheelCooldown = false, 1200);
+            // Reduced cooldown so you can chain swipes rapidly
+            setTimeout(() => wheelCooldown = false, 500);
         } else if (wheelAccumulator < -SWIPE_THRESHOLD && currentSlide > 0) {
             wheelCooldown = true;
             wheelAccumulator = 0;
             goToSlide(currentSlide - 1);
-            setTimeout(() => wheelCooldown = false, 1200);
+            // Reduced cooldown so you can chain swipes rapidly
+            setTimeout(() => wheelCooldown = false, 500);
         }
     }, { passive: true });
 
