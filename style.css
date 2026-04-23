@@ -1514,69 +1514,61 @@ body {
     background: rgba(11, 19, 14, 0.85); /* Dark translucent background */
 }
 
-/* Side navigation zones — wide areas outside text, swipe on hover */
+/* Side navigation zones — dynamic areas outside text content, proportional slide peeking */
 .side-nav-zone {
     position: fixed;
     top: var(--navbar-height);
-    /* Width covers the outer edges of the screen */
-    width: max(120px, 15vw); 
+    /* Width dynamically covers from content edge to screen edge */
+    width: calc((100vw - min(900px, 100vw)) / 2);
+    min-width: 60px;
     height: calc(100vh - var(--navbar-height));
     z-index: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
-    transition: var(--transition-fast);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Clicks handled by global mousemove, but keep click listener */
 }
 
-.side-nav-zone::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 3px;
-    height: 0%;
-    background-color: var(--color-accent);
-    transition: height 0s; /* Reset instantly when hover stops */
+/* Re-enable pointer events so clicks still work */
+.side-nav-zone { pointer-events: auto; }
+
+.side-nav-zone.peek-active {
+    opacity: 1;
+    background-color: rgba(45, 74, 62, 0.06);
 }
 
-.side-nav-zone.hover-active::before {
-    height: 100%;
-    transition: height 1.2s linear; /* 1.2 second timer animation */
+[data-theme="dark"] .side-nav-zone.peek-active {
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
 .side-nav-zone:hover {
-    opacity: 1;
-    background-color: rgba(45, 74, 62, 0.05);
-}
-
-[data-theme="dark"] .side-nav-zone:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    opacity: 0.7;
 }
 
 .side-nav-zone--left {
     left: 0;
-    border-right: 1px dashed rgba(45, 74, 62, 0.2);
-    background: linear-gradient(to right, rgba(45, 74, 62, 0.08), transparent);
+    border-right: 1px dashed rgba(45, 74, 62, 0.15);
 }
-.side-nav-zone--left::before { right: -1px; }
 
 .side-nav-zone--right {
     right: 0;
-    border-left: 1px dashed rgba(45, 74, 62, 0.2);
-    background: linear-gradient(to left, rgba(45, 74, 62, 0.08), transparent);
+    border-left: 1px dashed rgba(45, 74, 62, 0.15);
 }
-.side-nav-zone--right::before { left: -1px; }
 
 .side-nav-zone svg {
     color: var(--color-primary);
-    opacity: 0.6;
+    opacity: 0.5;
     filter: drop-shadow(0 0 4px rgba(45, 74, 62, 0.3));
+    transition: var(--transition-fast);
 }
 
-.side-nav-zone:hover svg {
+.side-nav-zone.peek-active svg {
     opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(45, 74, 62, 0.5));
+    filter: drop-shadow(0 0 12px rgba(45, 74, 62, 0.6));
+    transform: scale(1.3);
 }
 
 .side-nav-zone.hidden {
@@ -1584,11 +1576,9 @@ body {
 }
 
 @media (max-width: 1100px) {
-    .side-nav-zone--left {
-        left: 0;
-    }
-    .side-nav-zone--right {
-        right: 0;
+    .side-nav-zone {
+        width: calc((100vw - min(900px, 100vw)) / 2);
+        min-width: 40px;
     }
 }
 

@@ -108,11 +108,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ═══════════════════════════════════════════
-    // SIDE NAV ZONES (PC — click borders to switch panels)
+    // SIDE NAV ZONES (Proportional mouse-drag slide peeking)
     // ═══════════════════════════════════════════
+    // The active zone starts right after the panel-content area.
+    // Moving the mouse toward the screen edge gradually shifts the slide.
+    // Reaching the very edge commits the slide change.
+    // Pulling back before the edge snaps back to the original slide.
 
     const sideNavLeft = document.getElementById('side-nav-left');
     const sideNavRight = document.getElementById('side-nav-right');
+
+    // State for proportional peeking
+    let isPeeking = false;
+    let peekDirection = null; // 'left' or 'right'
+    let peekBaseSlide = null;
+    let isTransitioning = false; // lock during committed transitions
 
     function updateSideNav() {
         if (!sideNavLeft || !sideNavRight) return;
@@ -120,62 +130,173 @@ document.addEventListener('DOMContentLoaded', () => {
         sideNavRight.classList.toggle('hidden', currentSlide === PANEL_COUNT - 1);
     }
 
-    let sideNavLeftTimer;
-    let sideNavRightTimer;
+    // Calculate where the panel-content edges are (the text zone)
+    function getContentEdges() {
+        const panelContentEl = document.querySelector('.panel.panel-science .panel-content') ||
+                               document.querySelector('.panel-content');
+        if (!panelContentEl) {
+            // fallback: assume 900px centered
+            const contentWidth = Math.min(900, window.innerWidth);
+            const leftEdge = (window.innerWidth - contentWidth) / 2;
+            return { left: leftEdge, right: leftEdge + contentWidth };
+        }
+        const rect = panelContentEl.getBoundingClientRect();
+        return { left: rect.left, right: rect.right };
+    }
 
-    function startTimer(direction) {
-        if (direction === 'left') {
-            if (currentSlide > 0) {
-                sideNavLeft.classList.add('hover-active');
-                sideNavLeftTimer = setTimeout(() => {
-                    sideNavLeft.classList.remove('hover-active');
-                    goToSlide(currentSlide - 1);
-                    // Wait for the 1.2s slide transition to finish before starting the next timer
-                    setTimeout(() => {
-                        if (sideNavLeft.matches(':hover')) startTimer('left');
-                    }, 1250); // 1.2s transition + 50ms buffer
-                }, 1200);
+    // Global mousemove handler for proportional peeking
+    function handleMouseMove(e) {
+        if (isTransitioning) return;
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const navbarHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 72;
+
+        // Ignore if mouse is in the navbar area
+        if (mouseY < navbarHeight) {
+            if (isPeeking) cancelPeek();
+            return;
+        }
+
+        const edges = getContentEdges();
+        const screenW = window.innerWidth;
+        const EDGE_COMMIT_PX = 5; // How close to screen edge to commit
+
+        // LEFT ZONE: mouse is to the left of text content
+        if (mouseX < edges.left && currentSlide > 0) {
+            if (!isPeeking || peekDirection !== 'left') {
+                startPeek('left');
             }
-        } else {
-            if (currentSlide < PANEL_COUNT - 1) {
-                sideNavRight.classList.add('hover-active');
-                sideNavRightTimer = setTimeout(() => {
-                    sideNavRight.classList.remove('hover-active');
-                    goToSlide(currentSlide + 1);
-                    // Wait for the 1.2s slide transition to finish before starting the next timer
-                    setTimeout(() => {
-                        if (sideNavRight.matches(':hover')) startTimer('right');
-                    }, 1250); // 1.2s transition + 50ms buffer
-                }, 1200);
+            // Calculate progress: 0 at content edge, 1 at screen edge
+            const zoneWidth = edges.left;
+            const progress = Math.max(0, Math.min(1, (edges.left - mouseX) / zoneWidth));
+
+            applyPeekOffset(progress, 'left');
+
+            // Show the arrow
+            if (sideNavLeft) sideNavLeft.classList.add('peek-active');
+            if (sideNavRight) sideNavRight.classList.remove('peek-active');
+
+            // Commit if reached the edge
+            if (mouseX <= EDGE_COMMIT_PX) {
+                commitPeek('left');
+            }
+        }
+        // RIGHT ZONE: mouse is to the right of text content
+        else if (mouseX > edges.right && currentSlide < PANEL_COUNT - 1) {
+            if (!isPeeking || peekDirection !== 'right') {
+                startPeek('right');
+            }
+            // Calculate progress: 0 at content edge, 1 at screen edge
+            const zoneWidth = screenW - edges.right;
+            const progress = Math.max(0, Math.min(1, (mouseX - edges.right) / zoneWidth));
+
+            applyPeekOffset(progress, 'right');
+
+            // Show the arrow
+            if (sideNavRight) sideNavRight.classList.add('peek-active');
+            if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
+
+            // Commit if reached the edge
+            if (mouseX >= screenW - EDGE_COMMIT_PX) {
+                commitPeek('right');
+            }
+        }
+        // Mouse is back in the text content area
+        else {
+            if (isPeeking) {
+                cancelPeek();
             }
         }
     }
 
-    if (sideNavLeft) {
-        sideNavLeft.addEventListener('mouseenter', () => startTimer('left'));
-        sideNavLeft.addEventListener('mouseleave', () => {
-            sideNavLeft.classList.remove('hover-active');
-            clearTimeout(sideNavLeftTimer);
+    function startPeek(direction) {
+        isPeeking = true;
+        peekDirection = direction;
+        peekBaseSlide = currentSlide;
+        // Disable CSS transition for instant tracking
+        track.style.transition = 'none';
+    }
+
+    function applyPeekOffset(progress, direction) {
+        // Current slide base position
+        const baseOffset = -(peekBaseSlide * 100); // in vw
+        // Maximum peek is one full panel width (100vw)
+        const peekAmount = progress * 100; // in vw
+
+        let finalOffset;
+        if (direction === 'left') {
+            finalOffset = baseOffset + peekAmount; // slide right to reveal left panel
+        } else {
+            finalOffset = baseOffset - peekAmount; // slide left to reveal right panel
+        }
+        track.style.transform = `translateX(${finalOffset}vw)`;
+    }
+
+    function commitPeek(direction) {
+        isPeeking = false;
+        isTransitioning = true;
+
+        // Re-enable smooth transition for the final snap
+        track.style.transition = 'var(--transition-slide)';
+
+        if (direction === 'left' && currentSlide > 0) {
+            goToSlide(currentSlide - 1);
+        } else if (direction === 'right' && currentSlide < PANEL_COUNT - 1) {
+            goToSlide(currentSlide + 1);
+        }
+
+        if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
+        if (sideNavRight) sideNavRight.classList.remove('peek-active');
+        peekDirection = null;
+        peekBaseSlide = null;
+
+        // Unlock after transition finishes
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 1300);
+    }
+
+    function cancelPeek() {
+        if (!isPeeking) return;
+        isPeeking = false;
+
+        // Re-enable smooth transition to snap back
+        track.style.transition = 'var(--transition-slide)';
+        const baseOffset = -(peekBaseSlide * 100);
+        track.style.transform = `translateX(${baseOffset}vw)`;
+
+        if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
+        if (sideNavRight) sideNavRight.classList.remove('peek-active');
+        peekDirection = null;
+        peekBaseSlide = null;
+    }
+
+    // Attach global mousemove — only active on desktop (not mobile)
+    if (window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', handleMouseMove);
+
+        // Also cancel peek if mouse leaves the window entirely
+        document.addEventListener('mouseleave', () => {
+            if (isPeeking) cancelPeek();
         });
+    }
+
+    // Click on side zones still works for instant navigation
+    if (sideNavLeft) {
         sideNavLeft.addEventListener('click', () => {
-            if (currentSlide > 0) {
-                sideNavLeft.classList.remove('hover-active');
-                clearTimeout(sideNavLeftTimer);
+            if (currentSlide > 0 && !isTransitioning) {
+                cancelPeek();
+                track.style.transition = 'var(--transition-slide)';
                 goToSlide(currentSlide - 1);
             }
         });
     }
 
     if (sideNavRight) {
-        sideNavRight.addEventListener('mouseenter', () => startTimer('right'));
-        sideNavRight.addEventListener('mouseleave', () => {
-            sideNavRight.classList.remove('hover-active');
-            clearTimeout(sideNavRightTimer);
-        });
         sideNavRight.addEventListener('click', () => {
-            if (currentSlide < PANEL_COUNT - 1) {
-                sideNavRight.classList.remove('hover-active');
-                clearTimeout(sideNavRightTimer);
+            if (currentSlide < PANEL_COUNT - 1 && !isTransitioning) {
+                cancelPeek();
+                track.style.transition = 'var(--transition-slide)';
                 goToSlide(currentSlide + 1);
             }
         });
