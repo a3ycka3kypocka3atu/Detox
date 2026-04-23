@@ -1463,13 +1463,14 @@ body {
 .side-nav-zone {
     position: fixed;
     top: var(--navbar-height);
-    /* Width covers from edge to near the text column */
-    width: calc(50vw - 420px); 
+    /* Width covers the outer edges of the screen */
+    width: max(120px, 15vw); 
     height: calc(100vh - var(--navbar-height));
     z-index: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     opacity: 0.4;
     transition: opacity 0.3s ease;
 }
@@ -1480,16 +1481,12 @@ body {
 
 .side-nav-zone--left {
     left: 0;
-    justify-content: flex-end;
-    padding-right: 20px;
-    background: linear-gradient(to right, transparent, rgba(45, 74, 62, 0.08));
+    background: linear-gradient(to right, rgba(45, 74, 62, 0.08), transparent);
 }
 
 .side-nav-zone--right {
     right: 0;
-    justify-content: flex-start;
-    padding-left: 20px;
-    background: linear-gradient(to left, transparent, rgba(45, 74, 62, 0.08));
+    background: linear-gradient(to left, rgba(45, 74, 62, 0.08), transparent);
 }
 
 .side-nav-zone svg {
