@@ -212,43 +212,79 @@ document.addEventListener('DOMContentLoaded', () => {
         isPeeking = true;
         peekDirection = direction;
         peekBaseSlide = currentSlide;
-        // Slow smooth transition for a floaty, organic feel
-        track.style.transition = 'transform 0.3s ease-out';
-    }
-
-    // Easing function for smoother feel — responsive start, gentle end
-    function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
+        // Disable CSS transition — we animate with requestAnimationFrame instead
+        track.style.transition = 'none';
+        // Initialize lerp state from current position
+        peekCurrentOffset = -(currentSlide * 100);
+        peekTargetOffset = peekCurrentOffset;
+        // Start the animation loop
+        if (!peekAnimating) {
+            peekAnimating = true;
+            requestAnimationFrame(peekAnimationLoop);
+        }
     }
 
     // Max peek: just a subtle hint, not a full panel shift
     const MAX_PEEK_VW = 4;
+    // Lerp smoothing factor (0 = no movement, 1 = instant). Lower = smoother/slower.
+    const LERP_FACTOR = 0.06;
+
+    let peekTargetOffset = 0;   // Where we want to be (vw)
+    let peekCurrentOffset = 0;  // Where we actually are (vw)
+    let peekAnimating = false;
 
     function applyPeekOffset(progress, direction) {
-        // Current slide base position
+        // Compute target offset
         const baseOffset = -(peekBaseSlide * 100); // in vw
-        // Apply easing curve for smoother feel
-        const easedProgress = easeOutCubic(progress);
-        // Cap peek to a small hint
-        const peekAmount = easedProgress * MAX_PEEK_VW; // in vw
+        const peekAmount = progress * MAX_PEEK_VW; // in vw (no extra easing, lerp handles smoothing)
 
-        let finalOffset;
         if (direction === 'left') {
-            finalOffset = baseOffset + peekAmount;
+            peekTargetOffset = baseOffset + peekAmount;
         } else {
-            finalOffset = baseOffset - peekAmount;
+            peekTargetOffset = baseOffset - peekAmount;
         }
-        track.style.transform = `translateX(${finalOffset}vw)`;
+    }
+
+    function peekAnimationLoop() {
+        if (!peekAnimating) return;
+
+        // Smoothly interpolate current toward target
+        peekCurrentOffset += (peekTargetOffset - peekCurrentOffset) * LERP_FACTOR;
+
+        // Apply the smoothed position
+        track.style.transform = `translateX(${peekCurrentOffset}vw)`;
+
+        // Keep animating if we haven't settled
+        if (Math.abs(peekTargetOffset - peekCurrentOffset) > 0.01) {
+            requestAnimationFrame(peekAnimationLoop);
+        } else {
+            // Close enough — snap to exact target
+            peekCurrentOffset = peekTargetOffset;
+            track.style.transform = `translateX(${peekCurrentOffset}vw)`;
+            // If still peeking, keep the loop alive for future mouse moves
+            if (isPeeking) {
+                requestAnimationFrame(peekAnimationLoop);
+            } else {
+                peekAnimating = false;
+            }
+        }
     }
 
     function cancelPeek() {
         if (!isPeeking) return;
         isPeeking = false;
 
-        // Smooth snap back with a nice spring feel
+        // Stop the animation loop
+        peekAnimating = false;
+
+        // Smooth snap back with CSS transition
         track.style.transition = 'transform 1.2s cubic-bezier(0.22, 0.68, 0.35, 1)';
         const baseOffset = -(peekBaseSlide * 100);
         track.style.transform = `translateX(${baseOffset}vw)`;
+
+        // Reset lerp state
+        peekCurrentOffset = baseOffset;
+        peekTargetOffset = baseOffset;
 
         if (sideNavLeft) sideNavLeft.classList.remove('peek-active');
         if (sideNavRight) sideNavRight.classList.remove('peek-active');
@@ -258,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Restore default transition after snap-back
         setTimeout(() => {
             track.style.transition = 'var(--transition-slide)';
-        }, 1050);
+        }, 1300);
     }
 
     // Attach global mousemove — only active on desktop (not mobile)
