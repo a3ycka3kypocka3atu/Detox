@@ -102,6 +102,11 @@ html {
 body {
     font-family: var(--font-body);
     background-color: var(--color-background);
+    background-image: url('beautiful-plants-natural-environment.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--color-text);
     overflow: hidden;
     line-height: 1.7;
@@ -1485,16 +1490,25 @@ img {
 /* Colorful wildflower wallpaper — visible on sides around text */
 body {
     background-color: var(--color-background);
-    background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M40 290 Q42 220 45 180' stroke='%237A9E7E' stroke-width='1.2' opacity='0.25'/%3E%3Cpath d='M43 230 Q33 225 28 218' stroke='%237A9E7E' stroke-width='0.8' opacity='0.2'/%3E%3Cpath d='M43 230 Q53 225 58 218' stroke='%237A9E7E' stroke-width='0.8' opacity='0.2'/%3E%3Cpath d='M45 180 Q40 168 43 162 Q48 162 51 168 Q48 175 45 180' stroke='%23D4A847' stroke-width='0.8' fill='%23D4A847' opacity='0.22'/%3E%3Cpath d='M120 10 Q122 60 125 100' stroke='%237A9E7E' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M123 60 Q115 56 112 50' stroke='%237A9E7E' stroke-width='0.7' opacity='0.18'/%3E%3Ccircle cx='124' cy='103' r='2.5' fill='%236B8FCC' opacity='0.2'/%3E%3Ccircle cx='128' cy='100' r='2' fill='%236B8FCC' opacity='0.2'/%3E%3Ccircle cx='120' cy='100' r='2' fill='%236B8FCC' opacity='0.18'/%3E%3Cpath d='M210 290 Q215 230 218 195' stroke='%237A9E7E' stroke-width='1.2' opacity='0.22'/%3E%3Cpath d='M215 245 Q207 240 204 234' stroke='%237A9E7E' stroke-width='0.8' opacity='0.18'/%3E%3Cpath d='M218 195 Q210 185 213 178 Q218 175 223 178 Q226 185 218 195' stroke='%23E07B6B' stroke-width='0.7' fill='%23E07B6B' opacity='0.18'/%3E%3Cpath d='M270 10 Q272 55 275 85' stroke='%237A9E7E' stroke-width='1' opacity='0.2'/%3E%3Ccircle cx='275' cy='83' r='2.5' fill='%239B8EC4' opacity='0.2'/%3E%3Ccircle cx='278' cy='80' r='2' fill='%239B8EC4' opacity='0.18'/%3E%3Ccircle cx='272' cy='80' r='2' fill='%239B8EC4' opacity='0.18'/%3E%3Cpath d='M170 160 Q172 130 175 110' stroke='%237A9E7E' stroke-width='0.8' opacity='0.18'/%3E%3Ccircle cx='175' cy='108' r='2' fill='%23C8A951' opacity='0.2'/%3E%3Cellipse cx='80' cy='150' rx='5' ry='2' fill='%237A9E7E' opacity='0.07' transform='rotate(35 80 150)'/%3E%3Cellipse cx='250' cy='250' rx='4' ry='1.8' fill='%234A7C5C' opacity='0.06' transform='rotate(-25 250 250)'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 300px 300px;
+    background-image: url('beautiful-plants-natural-environment.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* Text area — fully opaque so flowers don't show under text */
 .panel-content {
     position: relative;
     z-index: 1;
-    background: var(--color-background);
+    background: rgba(245, 240, 230, 0.85); /* Translucent background to show body background */
     border-radius: var(--radius-lg);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+[data-theme="dark"] .panel-content {
+    background: rgba(11, 19, 14, 0.85); /* Dark translucent background */
 }
 
 /* Side navigation zones — wide areas outside text, swipe on hover */
