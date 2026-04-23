@@ -120,15 +120,52 @@ document.addEventListener('DOMContentLoaded', () => {
         sideNavRight.classList.toggle('hidden', currentSlide === PANEL_COUNT - 1);
     }
 
+    let sideNavLeftTimer;
+    let sideNavRightTimer;
+
     if (sideNavLeft) {
         sideNavLeft.addEventListener('mouseenter', () => {
-            if (currentSlide > 0) goToSlide(currentSlide - 1);
+            if (currentSlide > 0) {
+                sideNavLeft.classList.add('hover-active');
+                sideNavLeftTimer = setTimeout(() => {
+                    sideNavLeft.classList.remove('hover-active');
+                    goToSlide(currentSlide - 1);
+                }, 3000);
+            }
+        });
+        sideNavLeft.addEventListener('mouseleave', () => {
+            sideNavLeft.classList.remove('hover-active');
+            clearTimeout(sideNavLeftTimer);
+        });
+        sideNavLeft.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                sideNavLeft.classList.remove('hover-active');
+                clearTimeout(sideNavLeftTimer);
+                goToSlide(currentSlide - 1);
+            }
         });
     }
 
     if (sideNavRight) {
         sideNavRight.addEventListener('mouseenter', () => {
-            if (currentSlide < PANEL_COUNT - 1) goToSlide(currentSlide + 1);
+            if (currentSlide < PANEL_COUNT - 1) {
+                sideNavRight.classList.add('hover-active');
+                sideNavRightTimer = setTimeout(() => {
+                    sideNavRight.classList.remove('hover-active');
+                    goToSlide(currentSlide + 1);
+                }, 3000);
+            }
+        });
+        sideNavRight.addEventListener('mouseleave', () => {
+            sideNavRight.classList.remove('hover-active');
+            clearTimeout(sideNavRightTimer);
+        });
+        sideNavRight.addEventListener('click', () => {
+            if (currentSlide < PANEL_COUNT - 1) {
+                sideNavRight.classList.remove('hover-active');
+                clearTimeout(sideNavRightTimer);
+                goToSlide(currentSlide + 1);
+            }
         });
     }
 

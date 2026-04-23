@@ -1509,23 +1509,47 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.4;
-    transition: opacity 0.3s ease;
+    opacity: 0.6;
+    transition: var(--transition-fast);
+}
+
+.side-nav-zone::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: 0%;
+    background-color: var(--color-accent);
+    transition: height 0s; /* Reset instantly when hover stops */
+}
+
+.side-nav-zone.hover-active::before {
+    height: 100%;
+    transition: height 3s linear; /* 3 second timer animation */
 }
 
 .side-nav-zone:hover {
     opacity: 1;
+    background-color: rgba(45, 74, 62, 0.05);
+}
+
+[data-theme="dark"] .side-nav-zone:hover {
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .side-nav-zone--left {
     left: 0;
+    border-right: 1px dashed rgba(45, 74, 62, 0.2);
     background: linear-gradient(to right, rgba(45, 74, 62, 0.08), transparent);
 }
+.side-nav-zone--left::before { right: -1px; }
 
 .side-nav-zone--right {
     right: 0;
+    border-left: 1px dashed rgba(45, 74, 62, 0.2);
     background: linear-gradient(to left, rgba(45, 74, 62, 0.08), transparent);
 }
+.side-nav-zone--right::before { left: -1px; }
 
 .side-nav-zone svg {
     color: var(--color-primary);
