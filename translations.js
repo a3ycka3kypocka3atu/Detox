@@ -24,6 +24,12 @@ const translations = {
         "cz": "Nástroje",
         "en": "Tools"
     },
+    "theme_toggle": {
+        "ru": "Сменить тему",
+        "ua": "Змінити тему",
+        "cz": "Změnit motiv",
+        "en": "Toggle Theme"
+    },
 
     // ════════════ MAIN HERO (PANEL 2) ════════════
     "hero_badge": {
